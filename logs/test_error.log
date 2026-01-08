@@ -1,0 +1,3 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\ViewModels\PlanningViewModel.cs(9,42): error CS0246: The type or namespace name 'BaseViewModel' could not be found (are you missing a using directive or an assembly reference?) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj]

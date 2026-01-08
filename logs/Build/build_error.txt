@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+  SingleTask.Core -> c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+C:\Users\Gragware\.nuget\packages\microsoft.maui.resizetizer\10.0.0\buildTransitive\Microsoft.Maui.Resizetizer.After.targets(626,9): error : One or more invalid file names were detected.  File names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores: keyboard_arrow_down_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24 (Resources\Images\keyboard_arrow_down_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg), keyboard_arrow_up_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24 (Resources\Images\keyboard_arrow_up_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg) [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+
+Build FAILED.
+
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Users\Gragware\.nuget\packages\microsoft.maui.resizetizer\10.0.0\buildTransitive\Microsoft.Maui.Resizetizer.After.targets(626,9): error : One or more invalid file names were detected.  File names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores: keyboard_arrow_down_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24 (Resources\Images\keyboard_arrow_down_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg), keyboard_arrow_up_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24 (Resources\Images\keyboard_arrow_up_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg) [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.04

@@ -1,0 +1,4 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\ViewModels\PlanningViewModelTests.cs(19,26): error CS7036: There is no argument given that corresponds to the required parameter 'focusService' of 'PlanningViewModel.PlanningViewModel(IDatabaseService, IFocusService, INavigationService)' [C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj]

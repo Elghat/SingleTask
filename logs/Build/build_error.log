@@ -1,0 +1,12 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+c:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\PerformanceTests.cs(33,26): error CS7036: There is no argument given that corresponds to the required parameter 'nativeFocusService' of 'PlanningViewModel.PlanningViewModel(IDatabaseService, IFocusService, INavigationService, IAlertService, IDispatcherService, INativeFocusService)' [c:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj]
+
+Build FAILED.
+
+c:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\PerformanceTests.cs(33,26): error CS7036: There is no argument given that corresponds to the required parameter 'nativeFocusService' of 'PlanningViewModel.PlanningViewModel(IDatabaseService, IFocusService, INavigationService, IAlertService, IDispatcherService, INativeFocusService)' [c:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:02.50

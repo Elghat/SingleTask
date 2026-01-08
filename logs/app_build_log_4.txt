@@ -1,0 +1,16 @@
+  Determining projects to restore...
+  Restored c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj (in 677 ms).
+  1 of 2 projects are up-to-date for restore.
+  SingleTask.Core -> c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+  SingleTask -> c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\bin\Debug\net10.0-windows10.0.19041.0\win-x64\SingleTask.dll
+
+Build succeeded.
+
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+    2 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:11.63

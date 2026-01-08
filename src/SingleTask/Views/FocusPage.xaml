@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SingleTask.Views.FocusPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:SingleTask.Core.ViewModels;assembly=SingleTask.Core"
+    Title="Focus Mode"
+    x:DataType="viewModels:FocusViewModel"
+    BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <Grid Padding="30" RowDefinitions="Auto, *, Auto">
+
+        <!--  Row 0: Header  -->
+        <VerticalStackLayout
+            Grid.Row="0"
+            Margin="0,40,0,0"
+            HorizontalOptions="Center"
+            Spacing="4">
+            <Label
+                HorizontalOptions="Center"
+                Style="{StaticResource SubHeadline}"
+                Text="Focusing on..." />
+            <Label
+                FontSize="14"
+                HorizontalOptions="Center"
+                Opacity="0.7"
+                Style="{StaticResource SubHeadline}"
+                Text="{Binding TaskProgressText}" />
+        </VerticalStackLayout>
+
+        <!--  Row 1: Task Title (Centered)  -->
+        <Label
+            Grid.Row="1"
+            Style="{StaticResource LargeTitleLabelStyle}"
+            Text="{Binding TaskTitle}"
+            VerticalOptions="Center" />
+
+        <!--  Row 2: Actions  -->
+        <Grid Grid.Row="2" ColumnDefinitions="*, *, *">
+            <!--  Give Up / Back  -->
+            <Button
+                Grid.Column="0"
+                BackgroundColor="Transparent"
+                Command="{Binding QuitSessionCommand}"
+                FontSize="24"
+                HorizontalOptions="Start"
+                Text="✕"
+                TextColor="{StaticResource InkGrey}"
+                VerticalOptions="Center" />
+
+            <!--  DONE Button (Center Hero)  -->
+            <Button
+                Grid.Column="1"
+                Command="{Binding CompleteTaskCommand}"
+                CornerRadius="40"
+                FontSize="32"
+                HeightRequest="80"
+                HorizontalOptions="Center"
+                Style="{StaticResource RoundButtonStyle}"
+                Text="✓"
+                VerticalOptions="Center"
+                WidthRequest="80" />
+
+            <!--  Defer Button (Right)  -->
+            <Button
+                Grid.Column="2"
+                BackgroundColor="Transparent"
+                Command="{Binding DeferTaskCommand}"
+                FontSize="24"
+                HorizontalOptions="End"
+                TextColor="{StaticResource InkGrey}"
+                VerticalOptions="Center">
+                <Button.ImageSource>
+                    <OnPlatform x:TypeArguments="ImageSource">
+                        <On Platform="Android" Value="ic_defer" />
+                    </OnPlatform>
+                </Button.ImageSource>
+            </Button>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

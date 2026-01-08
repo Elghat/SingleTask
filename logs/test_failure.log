@@ -1,0 +1,35 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+  SingleTask.UnitTests -> C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll
+Test run for C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.28]     SingleTask.UnitTests.ViewModels.PlanningViewModelTests.AddTask_ValidTitle_AddsToCollectionAndService [FAIL]
+[xUnit.net 00:00:00.29]     SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_NoNextTask_StopsSession [FAIL]
+  Failed SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_NoNextTask_StopsSession [92 ms]
+  Error Message:
+   Moq.MockException : 
+Expected invocation on the mock once, but was 0 times: n => n.GoBackAsync()
+
+Performed invocations:
+
+   Mock<INavigationService:2> (n):
+
+      INavigationService.GoToAsync("CelebrationPage")
+
+  Stack Trace:
+     at Moq.Mock.Verify(Mock mock, LambdaExpression expression, Times times, String failMessage) in /_/src/Moq/Mock.cs:line 332
+   at Moq.Mock`1.Verify[TResult](Expression`1 expression, Func`1 times) in /_/src/Moq/Mock`1.cs:line 840
+   at SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_NoNextTask_StopsSession() in C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\ViewModels\FocusViewModelTests.cs:line 90
+--- End of stack trace from previous location ---
+  Failed SingleTask.UnitTests.ViewModels.PlanningViewModelTests.AddTask_ValidTitle_AddsToCollectionAndService [85 ms]
+  Error Message:
+   Assert.Single() Failure: The collection was empty
+  Stack Trace:
+     at SingleTask.UnitTests.ViewModels.PlanningViewModelTests.AddTask_ValidTitle_AddsToCollectionAndService() in C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\ViewModels\PlanningViewModelTests.cs:line 41
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:     8, Skipped:     0, Total:    10, Duration: 140 ms - SingleTask.UnitTests.dll (net10.0)

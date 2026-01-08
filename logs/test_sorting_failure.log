@@ -1,0 +1,22 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+  SingleTask.UnitTests -> C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll
+Test run for C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.41]     SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_WithNextTask_NavigatesToCelebration [FAIL]
+  Failed SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_WithNextTask_NavigatesToCelebration [2 ms]
+  Error Message:
+   System.ArgumentNullException : Value cannot be null. (Parameter 'source')
+  Stack Trace:
+     at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.OrderedIterator`2..ctor(IEnumerable`1 source, Func`2 keySelector, IComparer`1 comparer, Boolean descending, OrderedIterator`1 parent)
+   at System.Linq.Enumerable.OrderBy[TSource,TKey](IEnumerable`1 source, Func`2 keySelector)
+   at SingleTask.Core.ViewModels.FocusViewModel.CompleteTask() in C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\ViewModels\FocusViewModel.cs:line 67
+   at SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_WithNextTask_NavigatesToCelebration() in C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\ViewModels\FocusViewModelTests.cs:line 59
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     9, Skipped:     0, Total:    10, Duration: 200 ms - SingleTask.UnitTests.dll (net10.0)

@@ -1,0 +1,13 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+C:\Program Files\dotnet\sdk\10.0.100\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: Found version-specific or distribution-specific runtime identifier(s): alpine-arm, alpine-arm64, alpine-x64. Affected libraries: SQLitePCLRaw.lib.e_sqlite3. In .NET 8.0 and higher, assets for version-specific and distribution-specific runtime identifiers will not be found by default. See https://aka.ms/dotnet/rid-usage for details. [C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj]
+  SingleTask.UnitTests -> C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll
+
+Build succeeded.
+
+C:\Program Files\dotnet\sdk\10.0.100\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: Found version-specific or distribution-specific runtime identifier(s): alpine-arm, alpine-arm64, alpine-x64. Affected libraries: SQLitePCLRaw.lib.e_sqlite3. In .NET 8.0 and higher, assets for version-specific and distribution-specific runtime identifiers will not be found by default. See https://aka.ms/dotnet/rid-usage for details. [C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj]
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.68

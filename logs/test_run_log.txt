@@ -1,0 +1,19 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+  SingleTask.UnitTests -> C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll
+Test run for C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.36]     SingleTask.UnitTests.Services.DatabaseServiceTests.DatabaseService_ShouldInitializedAndSaveItem [FAIL]
+  Failed SingleTask.UnitTests.Services.DatabaseServiceTests.DatabaseService_ShouldInitializedAndSaveItem [78 ms]
+  Error Message:
+   System.IO.IOException : The process cannot access the file 'C:\Users\Gragware\AppData\Local\Temp\tmpxdy5qb.tmp' because it is being used by another process.
+  Stack Trace:
+     at System.IO.FileSystem.DeleteFile(String fullPath)
+   at SingleTask.UnitTests.Services.DatabaseServiceTests.DatabaseService_ShouldInitializedAndSaveItem() in C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\Services\DatabaseServiceTests.cs:line 27
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     2, Skipped:     0, Total:     3, Duration: 97 ms - SingleTask.UnitTests.dll (net10.0)

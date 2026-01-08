@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SingleTask - Daily Tasks</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#d97706", // warm amber/ink orange
+                        "primary-hover": "#b45309",
+                        "paper-light": "#fdfbf7", // off-white paper
+                        "paper-dark": "#e8e4dc",  // slightly darker paper for contrast
+                        "ink-dark": "#2d2a26",    // dark charcoal/ink
+                        "ink-medium": "#57534e",  // medium gray/ink
+                        "ink-light": "#a8a29e",   // light gray/ink
+                        "accent-warm": "#f5f5f4", // very light warm gray
+                        "border-paper": "#e5e0d6"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "paper": "0 2px 4px rgba(45, 42, 38, 0.05), 0 1px 2px rgba(45, 42, 38, 0.1)",
+                        "paper-lg": "0 10px 15px -3px rgba(45, 42, 38, 0.05), 0 4px 6px -2px rgba(45, 42, 38, 0.025)"
+                    }
+                },
+            },
+        }
+    </script>
+<style>body {
+    min-height: max(884px, 100dvh)
+    }.bg-paper-texture {
+    background-color: #fdfbf7;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuDXi_XL2_C3t9P_Bk3abDMA4gfTTWHt4d89X1lMBUERo0FM04M-aOqPgrIvrrmfY82AUKbXR8cdPVOVZIi2HRlf0CyYcsutB5MINx4LA2Mbbk7bvqbYQcnzf_YjDGf-sB7vOb2N-Yxys8VRWS0sF140cEBz-H0tjkGHUBljxvbCBlk4GdFofPOjHgMjxOGUVSiIuX3ZCoL9pG8xBtkic80h485bMFTgw-mAS9CPsAPfoly0CwtIcJBZArVlUBerCBIGUI-e2rUKJSr1)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-paper-texture font-display text-ink-dark transition-colors duration-200">
+<div class="fixed inset-0 z-50 pointer-events-none opacity-[0.05] mix-blend-multiply" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8HYecnVGRDcdKcrToNyX1gDLkeLXICiCKqKRTxnIlie0W7wBT9pp4L9dVeFcak5GjEUWXub700Fn2Zizh1DT6zeMhLbTvcVmu8cxWti2O6LbNUNOZdIuOWqDAnCn45T1D9w9y3aJ_gm36K255Rhsb7axxUVTAkbkL1XCcmlCfJG_CespJvyfEydi-R5sHCIps85N-k-7qXD_cLO-gbN2ICIxVHz98oI2cGuU0GGBDFBe2c0Pap1PLqjeClI_TYImqz1mEDoXEhCze");'></div>
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto overflow-hidden bg-transparent border-x border-border-paper/50">
+<header class="flex items-center px-6 pt-12 pb-6 justify-between sticky top-0 z-20 bg-[#fdfbf7]/95 backdrop-blur-sm border-b border-transparent transition-all duration-300">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-ink-medium tracking-widest uppercase mb-1 opacity-70">Thursday, Oct 24</span>
+<h2 class="text-3xl font-serif font-bold leading-tight tracking-tight text-ink-dark">Good Morning</h2>
+</div>
+<button aria-label="Toggle Focus Mode" class="group flex items-center justify-center p-2.5 rounded-full bg-[#f0ede6] hover:bg-[#e6e2d8] border border-border-paper/50 transition-all relative overflow-hidden shadow-sm">
+<span class="material-symbols-outlined text-ink-medium group-hover:text-primary transition-colors" style="font-size: 24px;">filter_center_focus</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col px-5 pb-36">
+<div class="mb-8 mt-2 flex items-center justify-between bg-[#fffefc] p-5 rounded-2xl shadow-paper border border-[#edeae4]">
+<div class="flex flex-col gap-1.5">
+<span class="text-sm font-semibold text-ink-medium">Daily Progress</span>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-serif font-bold text-ink-dark">4</span>
+<span class="text-base text-ink-medium">of 6 tasks</span>
+</div>
+</div>
+<div class="h-14 w-14 rounded-full border-[3px] border-[#edeae4] flex items-center justify-center relative bg-[#fcfbf9]">
+<svg class="absolute inset-0 -rotate-90" height="100%" viewBox="0 0 48 48" width="100%">
+<circle cx="24" cy="24" fill="none" r="20" stroke="#d97706" stroke-dasharray="125.6" stroke-dashoffset="41.8" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="text-[11px] font-bold text-ink-dark">66%</span>
+</div>
+</div>
+<div class="flex flex-col space-y-4" style="--checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27%23fdfbf7%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');">
+<div class="group relative flex items-center p-5 rounded-xl bg-[#fffefc] shadow-paper border border-[#edeae4] transition-all hover:shadow-md active:scale-[0.995]">
+<label class="flex items-center gap-4 w-full cursor-pointer select-none">
+<input class="peer h-6 w-6 rounded-md border-2 border-[#d6d3cc] bg-[#fcfbf9] text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all" type="checkbox"/>
+<div class="flex flex-col flex-1 peer-checked:opacity-40 peer-checked:line-through transition-opacity">
+<span class="text-[17px] font-semibold text-ink-dark font-display">Review Q3 Design Sprint</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-ink-light">schedule</span>
+<span class="text-xs text-ink-medium font-medium">10:00 AM • Design Team</span>
+</div>
+</div>
+</label>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity p-2 text-ink-light hover:text-ink-dark">
+<span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+</button>
+</div>
+<div class="group relative flex items-center p-5 rounded-xl bg-[#fffefc] shadow-paper border-l-4 border-l-primary border-y border-r border-r-[#edeae4] border-y-[#edeae4] transition-all hover:shadow-md active:scale-[0.995]">
+<label class="flex items-center gap-4 w-full cursor-pointer pl-1 select-none">
+<input class="peer h-6 w-6 rounded-md border-2 border-[#d6d3cc] bg-[#fcfbf9] text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all" type="checkbox"/>
+<div class="flex flex-col flex-1 peer-checked:opacity-40 peer-checked:line-through transition-opacity">
+<span class="text-[17px] font-semibold text-ink-dark font-display">Update User Flow Diagrams</span>
+<span class="text-xs text-primary font-bold tracking-wide uppercase mt-1">Focus Task • High Priority</span>
+</div>
+</label>
+</div>
+<div class="group relative flex items-center p-5 rounded-xl bg-[#fffefc] shadow-paper border border-[#edeae4] transition-all hover:shadow-md active:scale-[0.995]">
+<label class="flex items-center gap-4 w-full cursor-pointer select-none">
+<input class="peer h-6 w-6 rounded-md border-2 border-[#d6d3cc] bg-[#fcfbf9] text-primary checked:bg-primary checked:border-primary checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all" type="checkbox"/>
+<div class="flex flex-col flex-1 peer-checked:opacity-40 peer-checked:line-through transition-opacity">
+<span class="text-[17px] font-semibold text-ink-dark font-display">Send Weekly Report</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="material-symbols-outlined text-[14px] text-ink-light">timer</span>
+<span class="text-xs text-ink-medium font-medium">Before 5 PM</span>
+</div>
+</div>
+</label>
+</div>
+<div class="pt-6 pb-2 flex items-center gap-4">
+<div class="h-px bg-[#e5e0d6] flex-1"></div>
+<h3 class="text-xs font-bold text-ink-medium uppercase tracking-widest">Completed</h3>
+<div class="h-px bg-[#e5e0d6] flex-1"></div>
+</div>
+<div class="group relative flex items-center p-4 rounded-xl bg-[#f5f5f4]/50 border border-transparent transition-all">
+<label class="flex items-center gap-4 w-full cursor-pointer select-none">
+<input checked="" class="peer h-5 w-5 rounded-md border-2 border-[#d6d3cc] bg-transparent text-primary checked:bg-primary/50 checked:border-transparent checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all" type="checkbox"/>
+<div class="flex flex-col flex-1 opacity-50 line-through transition-opacity decoration-ink-medium/50">
+<span class="text-base font-medium text-ink-dark font-serif italic">Call with Engineering Team</span>
+</div>
+</label>
+</div>
+<div class="group relative flex items-center p-4 rounded-xl bg-[#f5f5f4]/50 border border-transparent transition-all">
+<label class="flex items-center gap-4 w-full cursor-pointer select-none">
+<input checked="" class="peer h-5 w-5 rounded-md border-2 border-[#d6d3cc] bg-transparent text-primary checked:bg-primary/50 checked:border-transparent checked:bg-[image:--checkbox-tick-svg] focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all" type="checkbox"/>
+<div class="flex flex-col flex-1 opacity-50 line-through transition-opacity decoration-ink-medium/50">
+<span class="text-base font-medium text-ink-dark font-serif italic">Morning Standup</span>
+</div>
+</label>
+</div>
+</div>
+<div class="hidden flex-col items-center justify-center py-16 px-4 text-center">
+<div class="w-24 h-24 mb-6 rounded-full bg-[#f0ede6] flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-ink-medium/50">check_circle</span>
+</div>
+<h3 class="text-xl font-serif font-bold text-ink-dark mb-2">All caught up!</h3>
+<p class="text-sm text-ink-medium">Time to rest or write a new chapter.</p>
+</div>
+</main>
+<div class="fixed bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-[#fdfbf7] via-[#fdfbf7]/95 to-transparent z-30 max-w-md mx-auto">
+<div class="flex items-center gap-3">
+<div class="flex-1 relative group shadow-paper-lg rounded-2xl">
+<input class="w-full h-14 pl-5 pr-12 rounded-2xl border border-[#edeae4] bg-[#fffefc] text-ink-dark placeholder:text-ink-light focus:ring-2 focus:ring-primary/20 focus:border-primary focus:outline-none transition-all text-base font-medium" placeholder="Write a new task..." type="text"/>
+<button aria-label="Submit task" class="absolute right-2 top-2 bottom-2 aspect-square flex items-center justify-center rounded-xl text-primary hover:bg-[#fef3c7] transition-colors">
+<span class="material-symbols-outlined">arrow_upward</span>
+</button>
+</div>
+<button aria-label="Create new task" class="h-14 w-14 rounded-2xl bg-ink-dark text-[#fdfbf7] shadow-lg shadow-ink-dark/20 flex items-center justify-center active:scale-95 transition-transform hover:bg-black border border-ink-dark">
+<span class="material-symbols-outlined font-normal" style="font-size: 28px;">edit</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

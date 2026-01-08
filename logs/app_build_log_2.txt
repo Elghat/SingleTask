@@ -1,0 +1,15 @@
+  Determining projects to restore...
+  Restored c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj (in 308 ms).
+  1 of 2 projects are up-to-date for restore.
+C:\Program Files\dotnet\sdk\10.0.100\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: Found version-specific or distribution-specific runtime identifier(s): alpine-arm, alpine-arm64, alpine-x64. Affected libraries: SQLitePCLRaw.lib.e_sqlite3. In .NET 8.0 and higher, assets for version-specific and distribution-specific runtime identifiers will not be found by default. See https://aka.ms/dotnet/rid-usage for details. [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj]
+  SingleTask.Core -> c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\MainPage.xaml.cs(5,21): error CS0246: The type or namespace name 'ViewModels' could not be found (are you missing a using directive or an assembly reference?) [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+
+Build FAILED.
+
+C:\Program Files\dotnet\sdk\10.0.100\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: Found version-specific or distribution-specific runtime identifier(s): alpine-arm, alpine-arm64, alpine-x64. Affected libraries: SQLitePCLRaw.lib.e_sqlite3. In .NET 8.0 and higher, assets for version-specific and distribution-specific runtime identifiers will not be found by default. See https://aka.ms/dotnet/rid-usage for details. [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj]
+c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\MainPage.xaml.cs(5,21): error CS0246: The type or namespace name 'ViewModels' could not be found (are you missing a using directive or an assembly reference?) [c:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+    1 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:11.09

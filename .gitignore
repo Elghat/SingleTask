@@ -1,0 +1,16 @@
+# --- Build Artifacts (INUTILES sur GitHub) ---
+bin/
+obj/
+.vs/
+.vscode/
+
+# --- SECRETS (DANGEREUX sur GitHub) ---
+*.keystore
+*.p12
+*.jks
+*.aab
+*.apk
+
+# --- USER SPECIFIC ---
+*.user
+*.suo

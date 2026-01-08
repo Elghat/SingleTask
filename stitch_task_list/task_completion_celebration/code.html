@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Completion Celebration</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "paper": "#F9F7F1",
+                        "paper-dark": "#E8E4D9",
+                        "ink": "#3C3836","ink-light": "#5E5955","accent": "#D96C4A", 
+                        "accent-muted": "#E0AFA0",
+                        "warm-gray": "#8C8682",
+                    },
+                    fontFamily: {
+                        "display": ["Crimson Pro", "serif"],
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSc0JyBoZWlnaHQ9JzQnPgo8cmVjdCB3aWR0aD0nNCcgaGVpZ2h0PSc0JyBmaWxsPScjRjlGN0YxJy8+CjxyZWN0IHdpZHRoPScxJyBoZWlnaHQ9JzEnIGZpbGw9JyNFOUU1REMnLz4KPC9zdmc+')",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+.paper-shadow {
+    box-shadow: 2px 4px 12px rgba(60, 56, 54, 0.08)
+}
+.ink-texture {
+    color: #3C3836;
+    text-shadow: 0 0 1px rgba(60, 56, 54, 0.1)
+}
+.bg-grain {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuARCS0A3DXhreDA0x-29p1gPHrl6rZ9Wn1CgwLYd-obwjnTwvuED39Ah-TweHLg2Vowi_E8oelTPk5KMWwM8l4YuKCp34p7sIybl9sUjTnFtgMrAANkSynNxfYguPrOHzeWyKdJpSLU7mL4-YR-lWe-2DLFt8DzWq1UEvRip8sMcEXsGpo96JJWoicAj5vlg6qlSdN23dKrz11TgxaQrhv05pP0ZH1IQhzP14pVDX4UJhPh4JZ97KyMFYCZX_AS0IX2gbxzzM7dWPWz);
+    background-repeat: repeat
+}
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="relative flex h-full min-h-screen w-full flex-col bg-paper font-sans overflow-x-hidden transition-colors duration-200 bg-paper-texture bg-cover bg-fixed bg-center bg-no-repeat">
+<div class="fixed inset-0 z-0 bg-grain pointer-events-none mix-blend-multiply opacity-60"></div>
+<div class="absolute inset-0 overflow-hidden pointer-events-none opacity-20 z-0">
+<div class="absolute top-20 left-10 text-ink/30 rotate-12 transform scale-150">
+<span class="material-symbols-outlined text-6xl font-light">edit_note</span>
+</div>
+<div class="absolute top-40 right-10 text-accent/20 -rotate-12 transform scale-100">
+<span class="material-symbols-outlined text-4xl">check_circle</span>
+</div>
+<div class="absolute bottom-40 left-12 text-warm-gray/20 rotate-45 transform scale-125">
+<span class="material-symbols-outlined text-5xl">radio_button_unchecked</span>
+</div>
+<div class="absolute top-1/2 right-8 text-ink/10 rotate-180 transform scale-75">
+<span class="material-symbols-outlined text-3xl">change_history</span>
+</div>
+</div>
+<div class="z-10 flex flex-1 flex-col items-center justify-center p-6 w-full max-w-md mx-auto relative">
+<div class="flex-1"></div>
+<div class="flex flex-col items-center gap-8 w-full">
+<div class="relative group">
+<div class="absolute -inset-2 rounded-full border-2 border-dashed border-accent/30 animate-[spin_10s_linear_infinite]"></div>
+<div class="absolute -inset-4 bg-accent/5 rounded-full blur-xl"></div>
+<div class="relative flex items-center justify-center w-40 h-40 bg-[#FFFDF8] border-4 border-ink rounded-full paper-shadow">
+<span class="material-symbols-outlined text-accent text-[80px]" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+</div>
+<div class="flex flex-col items-center text-center space-y-3">
+<h1 class="text-ink font-display text-5xl md:text-6xl font-bold tracking-tight leading-tight ink-texture italic">
+                    All Tasks<br/>Complete!
+                </h1>
+<p class="text-warm-gray font-serif text-xl italic leading-relaxed max-w-[280px]">
+                    Great focus today.<br/>See you tomorrow.
+                </p>
+</div>
+<div class="flex items-center justify-center mt-2">
+<div class="flex h-12 items-center justify-center gap-x-3 rounded-xl bg-[#FFFDF8] border-2 border-paper-dark px-6 shadow-sm transform -rotate-1">
+<span class="text-xl text-accent">🔥</span>
+<div class="h-4 w-[1px] bg-paper-dark"></div>
+<p class="text-ink font-sans text-sm font-bold tracking-wide uppercase">12 Day Streak</p>
+</div>
+</div>
+</div>
+<div class="flex-1"></div>
+<div class="w-full pt-8 pb-4">
+<button class="relative w-full overflow-hidden rounded-xl h-14 bg-ink text-paper hover:bg-ink/90 active:scale-[0.98] transition-all duration-200 flex items-center justify-center paper-shadow group border-2 border-transparent hover:border-paper-dark">
+<span class="text-lg font-serif font-semibold tracking-wide group-hover:underline decoration-accent decoration-2 underline-offset-4">Continue</span>
+</button>
+</div>
+</div>
+</body></html>

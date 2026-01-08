@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\ViewModels\MainViewModel.cs(24,9): error CS0103: The name 'SemanticScreenReader' does not exist in the current context [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj]
+
+Build FAILED.
+
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\ViewModels\MainViewModel.cs(24,9): error CS0103: The name 'SemanticScreenReader' does not exist in the current context [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:01.26

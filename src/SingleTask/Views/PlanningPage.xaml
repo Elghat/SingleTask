@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SingleTask.Views.PlanningPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:SingleTask.Core.Models;assembly=SingleTask.Core"
+    xmlns:viewModels="clr-namespace:SingleTask.Core.ViewModels;assembly=SingleTask.Core"
+    Title="Plan Your Day"
+    x:DataType="viewModels:PlanningViewModel"
+    BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <ContentPage.Resources>
+        <!--  Local converter if needed, or use global  -->
+    </ContentPage.Resources>
+
+    <Grid Padding="20" RowDefinitions="Auto, *, Auto, Auto">
+
+        <!--  Row 0: Header  -->
+        <VerticalStackLayout Grid.Row="0" Spacing="5">
+            <Label
+                Style="{StaticResource Headline}"
+                Text="Good Morning"
+                TextColor="{StaticResource InkBlack}" />
+            <Label
+                FontSize="16"
+                Opacity="0.6"
+                Style="{StaticResource SubHeadline}"
+                Text="What's your focus today?"
+                TextColor="{StaticResource InkGrey}" />
+        </VerticalStackLayout>
+
+        <!--  Row 1: Task List (ScrollView)  -->
+        <ScrollView Grid.Row="1" Margin="0,20">
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Tasks}" Spacing="12">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:TaskItem">
+                        <Border Style="{StaticResource CardSurfaceStyle}">
+                            <Border.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsCompleted}"
+                                    TargetType="Border"
+                                    Value="True">
+                                    <Setter Property="Opacity" Value="0.5" />
+                                    <Setter Property="InputTransparent" Value="True" />
+                                </DataTrigger>
+                            </Border.Triggers>
+                            <!--  Interaction removed as per request  -->
+                            <Grid Padding="15" ColumnDefinitions="Auto, *, Auto, Auto">
+                                <!--  Index  -->
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="0,0,10,0"
+                                    FontSize="18"
+                                    Text="{Binding DisplayIndex, StringFormat='{0}.'}"
+                                    TextColor="{StaticResource InkGrey}"
+                                    VerticalOptions="Center" />
+
+                                <!--  Title  -->
+                                <Label
+                                    Grid.Column="1"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsCompleted}"
+                                            TargetType="Label"
+                                            Value="True">
+                                            <Setter Property="TextDecorations" Value="Strikethrough" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+
+                                <!--  Reordering  -->
+                                <HorizontalStackLayout
+                                    Grid.Column="2"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+                                    <ImageButton
+                                        Padding="8"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=MoveTaskDownCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="40"
+                                        IsVisible="{Binding CanMoveDown}"
+                                        Source="arrow_down"
+                                        WidthRequest="40" />
+                                    <ImageButton
+                                        Padding="8"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=MoveTaskUpCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="40"
+                                        IsVisible="{Binding CanMoveUp}"
+                                        Source="arrow_up"
+                                        WidthRequest="40" />
+                                </HorizontalStackLayout>
+
+                                <Button
+                                    Grid.Column="3"
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=DeleteTaskCommand}"
+                                    CommandParameter="{Binding .}"
+                                    FontFamily="Inter"
+                                    FontSize="20"
+                                    HeightRequest="40"
+                                    HorizontalOptions="End"
+                                    Text="🗑"
+                                    TextColor="{StaticResource InkGrey}"
+                                    WidthRequest="40" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!--  Row 2: Input Area  -->
+        <Border
+            Grid.Row="2"
+            Margin="0,10,0,0"
+            Padding="10"
+            BackgroundColor="{StaticResource CardSurface}"
+            Stroke="{StaticResource InkGrey}"
+            StrokeShape="RoundRectangle 10">
+            <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                <Entry
+                    Grid.Column="0"
+                    Placeholder="Enter a new task..."
+                    PlaceholderColor="{StaticResource InkGrey}"
+                    ReturnCommand="{Binding AddTaskCommand}"
+                    Text="{Binding NewTaskTitle}"
+                    TextColor="{StaticResource InkBlack}" />
+                <ImageButton
+                    Grid.Column="1"
+                    Padding="12"
+                    BackgroundColor="{StaticResource Primary}"
+                    Command="{Binding AddTaskCommand}"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    WidthRequest="50">
+                    <ImageButton.Source>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="Android" Value="ic_add" />
+                        </OnPlatform>
+                    </ImageButton.Source>
+                    <ImageButton.Shadow>
+                        <Shadow
+                            Brush="{StaticResource Primary}"
+                            Opacity="0.4"
+                            Radius="8"
+                            Offset="0,4" />
+                    </ImageButton.Shadow>
+                </ImageButton>
+            </Grid>
+        </Border>
+
+        <!--  Row 3: Start Button  -->
+        <Button
+            Grid.Row="3"
+            Margin="0,20,0,0"
+            Command="{Binding StartFocusCommand}"
+            CornerRadius="30"
+            HeightRequest="60"
+            IsVisible="{Binding HasPendingTasks}"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Text="Start Focus">
+            <Button.ImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="Android" Value="ic_start" />
+                </OnPlatform>
+            </Button.ImageSource>
+        </Button>
+
+    </Grid>
+
+</ContentPage>

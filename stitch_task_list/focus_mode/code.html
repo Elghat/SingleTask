@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#f5f2eb" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="#2b2826" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<title>Focus Mode</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#cd7f58", // Warm Terracotta
+                        "background-light": "#f5f2eb", // Off-white Paper
+                        "background-dark": "#2b2826", // Deep Warm Sepia (Replaced the previous near-black)
+                        "ink": "#3d342f", // Warm Deep Brown (Ink) - Softer than pure black
+                        "paper-shadow": "#e6e2d8",
+                        "charcoal-light": "#4a4540", // Lighter warm charcoal for UI elements
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    boxShadow: {
+                        // Overriding default shadow-sm to use ink color instead of black for "No Black" compliance
+                        'sm': '0 1px 2px 0 rgba(61, 52, 47, 0.05)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+    .bg-paper-pattern {
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuA_GnwrMZ27qbt9z0bnO84ZlIaC_FC7tcHnrHj0ljowF3pKFYtQsrUsdUhdtZJnQ_dXHrTwEuG86SMwsbgzpFmq3LS9NBBBTGJVhArd0VcxeCjd3EYfa0yfkrcw_sNn16XfTotvNbLYIo7A9O12nnQX_jA5n92nAkCH5KyaIaYgMn2BgCk1OOoMsTD9ygPm0Qn2dygKjLSCR_Z_ZHHGi8yAMtigq8ljCGBnKd7VICTaVusrWLII95bDgQvcbeUPhyhNctGOPgl3UFrb);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-ink dark:text-[#efece6] font-display antialiased overflow-hidden selection:bg-primary selection:text-white transition-colors duration-300">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<div class="pointer-events-none fixed inset-0 z-50 h-full w-full bg-paper-pattern opacity-[0.15] mix-blend-multiply dark:opacity-[0.08] dark:mix-blend-overlay"></div>
+<header class="flex items-center justify-between p-4 pt-6 pb-2 shrink-0 z-10">
+<button aria-label="Close focus mode" class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-ink/5 dark:hover:bg-[#efece6]/10 transition-colors">
+<span class="material-symbols-outlined text-2xl text-ink dark:text-[#efece6]">close</span>
+</button>
+<h2 class="text-base font-semibold tracking-wide uppercase text-ink/70 dark:text-[#efece6]/70">Focus Mode</h2>
+<div class="flex size-10 items-center justify-center">
+</div>
+</header>
+<div class="flex flex-col px-6 pt-2 pb-6 shrink-0 z-10">
+<div class="flex items-center justify-between mb-2">
+<p class="text-xs font-bold uppercase tracking-wider text-ink/50 dark:text-[#9e9994]">Task 2 of 5</p>
+<p class="text-xs font-bold uppercase tracking-wider text-ink/50 dark:text-[#9e9994]">3 Remaining</p>
+</div>
+<div class="h-1.5 w-full rounded-full bg-paper-shadow dark:bg-charcoal-light overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 40%;"></div>
+</div>
+</div>
+<main class="flex-1 flex flex-col items-center justify-center px-6 relative z-0">
+<div class="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-10">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary rounded-full blur-[100px]"></div>
+</div>
+<div class="w-full max-w-md flex flex-col gap-6 text-center relative z-10">
+<div class="inline-flex mx-auto items-center justify-center rounded-full bg-primary/10 px-3 py-1 mb-2 border border-primary/20 backdrop-blur-sm shadow-sm shadow-primary/5">
+<span class="material-symbols-outlined text-sm text-primary mr-1.5">timer</span>
+<span class="text-xs font-bold text-primary tracking-wide">25:00</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-extrabold leading-[1.1] tracking-tight text-ink dark:text-[#efece6] text-balance">
+                Write Project Proposal
+            </h1>
+<p class="text-lg text-ink/70 dark:text-[#d6d2cc] font-medium leading-relaxed max-w-xs mx-auto text-balance">
+                Draft the initial outline for the Q4 marketing strategy proposal including budget estimates.
+            </p>
+</div>
+</main>
+<footer class="flex flex-col gap-4 px-6 pb-8 pt-4 shrink-0 z-10 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark dark:to-transparent">
+<button class="group relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-16 bg-primary shadow-[0_4px_20px_rgba(205,127,88,0.25)] hover:shadow-[0_6px_30px_rgba(205,127,88,0.4)] transition-all active:scale-[0.98]">
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+<div class="relative flex items-center gap-3">
+<span class="material-symbols-outlined text-white text-[28px] font-bold">check_circle</span>
+<span class="text-white text-lg font-bold tracking-tight">Complete Task</span>
+</div>
+</button>
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg py-3 text-ink/60 dark:text-[#efece6]/40 hover:text-ink dark:hover:text-[#efece6] transition-colors">
+<span class="material-symbols-outlined text-xl">skip_next</span>
+<span class="text-sm font-semibold">Defer to later</span>
+</button>
+</footer>
+</div>
+
+</body></html>

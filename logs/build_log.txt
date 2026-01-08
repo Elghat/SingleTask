@@ -1,0 +1,20 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Services\AlertService.cs(9,16): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+C:\Users\Gragware\.nuget\packages\microsoft.maui.resizetizer\10.0.0\buildTransitive\Microsoft.Maui.Resizetizer.After.targets(626,9): error : One or more invalid file names were detected.  File names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores: paperTexture (Resources\Images\paperTexture.png) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Users\Gragware\.nuget\packages\microsoft.maui.resizetizer\10.0.0\buildTransitive\Microsoft.Maui.Resizetizer.After.targets(626,9): error : One or more invalid file names were detected.  File names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores: paperTexture (Resources\Images\paperTexture.png) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+
+Build FAILED.
+
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Services\AlertService.cs(9,16): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+C:\Users\Gragware\.nuget\packages\microsoft.maui.resizetizer\10.0.0\buildTransitive\Microsoft.Maui.Resizetizer.After.targets(626,9): error : One or more invalid file names were detected.  File names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores: paperTexture (Resources\Images\paperTexture.png) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Users\Gragware\.nuget\packages\microsoft.maui.resizetizer\10.0.0\buildTransitive\Microsoft.Maui.Resizetizer.After.targets(626,9): error : One or more invalid file names were detected.  File names must be lowercase, start and end with a letter character, and contain only alphanumeric characters or underscores: paperTexture (Resources\Images\paperTexture.png) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-windows10.0.19041.0]
+    3 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:04.18

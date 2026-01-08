@@ -1,0 +1,4 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\ViewModels\BaseViewModelTests.cs(2,18): error CS0234: The type or namespace name 'ViewModels' does not exist in the namespace 'SingleTask' (are you missing an assembly reference?) [C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj]

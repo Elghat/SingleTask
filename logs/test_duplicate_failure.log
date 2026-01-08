@@ -1,0 +1,28 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+  SingleTask.UnitTests -> C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll
+Test run for C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.34]     SingleTask.UnitTests.ViewModels.PlanningViewModelTests.StartFocus_StartsFirstOrderedTask [FAIL]
+  Failed SingleTask.UnitTests.ViewModels.PlanningViewModelTests.StartFocus_StartsFirstOrderedTask [99 ms]
+  Error Message:
+   Moq.MockException : 
+Expected invocation on the mock once, but was 0 times: n => n.GoToAsync("FocusPage", It.IsAny<IDictionary<string, object>>())
+
+Performed invocations:
+
+   Mock<INavigationService:4> (n):
+
+      INavigationService.GoToAsync("FocusPage")
+
+  Stack Trace:
+     at Moq.Mock.Verify(Mock mock, LambdaExpression expression, Times times, String failMessage) in /_/src/Moq/Mock.cs:line 332
+   at Moq.Mock`1.Verify[TResult](Expression`1 expression, Func`1 times) in /_/src/Moq/Mock`1.cs:line 840
+   at SingleTask.UnitTests.ViewModels.PlanningViewModelTests.StartFocus_StartsFirstOrderedTask() in C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\ViewModels\PlanningViewModelTests.cs:line 163
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:    13, Skipped:     0, Total:    14, Duration: 170 ms - SingleTask.UnitTests.dll (net10.0)

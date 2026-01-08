@@ -1,0 +1,34 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj(80,3): warning : DEBUG: Configuration='Release' [TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj(81,3): warning : DEBUG: AndroidSigningKeyStore='..\..\singletask.keystore' [TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj(82,3): warning : DEBUG: AndroidKeyStore='True' [TargetFramework=net10.0-android]
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Release\net10.0\SingleTask.Core.dll
+  SingleTask -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\bin\Release\net10.0-android\SingleTask.dll
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Release\net10.0\SingleTask.Core.dll
+  Optimizing assemblies for size may change the behavior of the app. Be sure to test after publishing. See: https://aka.ms/dotnet-illink
+  Optimizing assemblies for size may change the behavior of the app. Be sure to test after publishing. See: https://aka.ms/dotnet-illink
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009: System.InvalidOperationException: Internal error: missing native code generation state for architecture 'Arm64' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.EnsureCodeGenState(NativeCodeGenStateCollection nativeCodeGenStates, AndroidTargetArch targetArch) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.<Generate>g__MakeMonoGenerator|44_0(<>c__DisplayClass44_0&) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.Generate(NativeCodeGenStateCollection nativeCodeGenStates, String abi) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.RunTask() [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Microsoft.Android.Build.Tasks.AndroidTask.Execute() [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+
+Build FAILED.
+
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj(80,3): warning : DEBUG: Configuration='Release' [TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj(81,3): warning : DEBUG: AndroidSigningKeyStore='..\..\singletask.keystore' [TargetFramework=net10.0-android]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj(82,3): warning : DEBUG: AndroidKeyStore='True' [TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009: System.InvalidOperationException: Internal error: missing native code generation state for architecture 'Arm64' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.EnsureCodeGenState(NativeCodeGenStateCollection nativeCodeGenStates, AndroidTargetArch targetArch) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.<Generate>g__MakeMonoGenerator|44_0(<>c__DisplayClass44_0&) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.Generate(NativeCodeGenStateCollection nativeCodeGenStates, String abi) [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Xamarin.Android.Tasks.GenerateNativeMarshalMethodSources.RunTask() [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(1911,3): error XAGNM7009:    at Microsoft.Android.Build.Tasks.AndroidTask.Execute() [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+    4 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:02.77

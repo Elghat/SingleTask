@@ -1,0 +1,20 @@
+  Determining projects to restore...
+  Restored C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj (in 329 ms).
+  Restored C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj (in 614 ms).
+  Unable to use package assets cache due to I/O error. This can occur when the same project is built more than once in parallel. Performance may be degraded, but the build result will not be impacted.
+C:\Program Files\dotnet\sdk\10.0.100\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: Found version-specific or distribution-specific runtime identifier(s): alpine-arm, alpine-arm64, alpine-x64. Affected libraries: SQLitePCLRaw.lib.e_sqlite3. In .NET 8.0 and higher, assets for version-specific and distribution-specific runtime identifiers will not be found by default. See https://aka.ms/dotnet/rid-usage for details. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj]
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+  SingleTask -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\bin\Debug\net10.0-android\SingleTask.dll
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(2502,3): warning XA0141: Android 16 will require 16 KB page sizes, shared library 'libe_sqlite3.so' does not have a 16 KB page size. Please inform the authors of the NuGet package 'SQLitePCLRaw.lib.e_sqlite3.android' version '2.1.2' which contains 'C:\Users\Gragware\.nuget\packages\sqlitepclraw.lib.e_sqlite3.android\2.1.2\lib\net6.0-android31.0\SQLitePCLRaw.lib.e_sqlite3.android.aar'. See https://developer.android.com/guide/practices/page-sizes for more details. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+
+Build succeeded.
+
+C:\Program Files\dotnet\sdk\10.0.100\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.targets(308,5): warning NETSDK1206: Found version-specific or distribution-specific runtime identifier(s): alpine-arm, alpine-arm64, alpine-x64. Affected libraries: SQLitePCLRaw.lib.e_sqlite3. In .NET 8.0 and higher, assets for version-specific and distribution-specific runtime identifiers will not be found by default. See https://aka.ms/dotnet/rid-usage for details. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj]
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\PlanningPage.xaml.cs(24,23): warning CS0618: 'Page.DisplayAlert(string, string, string)' is obsolete: 'Use DisplayAlertAsync instead' [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(2502,3): warning XA0141: Android 16 will require 16 KB page sizes, shared library 'libe_sqlite3.so' does not have a 16 KB page size. Please inform the authors of the NuGet package 'SQLitePCLRaw.lib.e_sqlite3.android' version '2.1.2' which contains 'C:\Users\Gragware\.nuget\packages\sqlitepclraw.lib.e_sqlite3.android\2.1.2\lib\net6.0-android31.0\SQLitePCLRaw.lib.e_sqlite3.android.aar'. See https://developer.android.com/guide/practices/page-sizes for more details. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+    3 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:01:14.32
