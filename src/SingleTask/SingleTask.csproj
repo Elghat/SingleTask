@@ -28,12 +28,31 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 	</PropertyGroup>
 
+	<!-- ============================================================================
+	     Android Release Signing Configuration
+	     ============================================================================
+	     SECURITY: Credentials are loaded from environment variables, never hardcoded.
+	     
+	     For LOCAL builds: Set these environment variables in your PowerShell profile:
+	       $env:ANDROID_KEYSTORE_PATH = "C:\path\to\keystore.keystore"
+	       $env:ANDROID_KEYSTORE_PASSWORD = "your-password"
+	       $env:ANDROID_KEY_ALIAS = "your-alias"
+	       $env:ANDROID_KEY_PASSWORD = "your-password"
+	     
+	     For CI/CD (GitHub Actions): Secrets are injected automatically.
+	     See: docs/GITHUB_SECRETS_KEYSTORE_TUTORIAL.md
+	     ============================================================================ -->
 	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
 		<AndroidKeyStore>True</AndroidKeyStore>
-		<AndroidSigningKeyStore>$(ProjectDir)..\..\singletask.keystore</AndroidSigningKeyStore>
-		<AndroidSigningStorePass>Huntsman8-Backshift4-Whiff8-Ended5-Dimness6-Calcium8-Cloud2</AndroidSigningStorePass>
+		<!-- Keystore path: Read from environment variable, fallback to user profile location -->
+		<_KeystorePathFromEnv>$([System.Environment]::GetEnvironmentVariable('ANDROID_KEYSTORE_PATH'))</_KeystorePathFromEnv>
+		<AndroidSigningKeyStore Condition="'$(_KeystorePathFromEnv)' != ''">$(_KeystorePathFromEnv)</AndroidSigningKeyStore>
+		<AndroidSigningKeyStore Condition="'$(_KeystorePathFromEnv)' == ''">$(USERPROFILE)\.android-keystores\singletask_release.keystore</AndroidSigningKeyStore>
+		<!-- Credentials from environment variables (env: prefix only works for passwords) -->
 		<AndroidSigningKeyAlias>singletask_key</AndroidSigningKeyAlias>
-		<AndroidSigningKeyPass>Huntsman8-Backshift4-Whiff8-Ended5-Dimness6-Calcium8-Cloud2</AndroidSigningKeyPass>
+		<AndroidSigningStorePass>env:ANDROID_KEYSTORE_PASSWORD</AndroidSigningStorePass>
+		<AndroidSigningKeyPass>env:ANDROID_KEY_PASSWORD</AndroidSigningKeyPass>
+		<!-- Output format -->
 		<AndroidPackageFormats>aab</AndroidPackageFormats>
 	</PropertyGroup>
 

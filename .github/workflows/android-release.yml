@@ -1,0 +1,180 @@
+# ============================================================================
+# GitHub Actions Workflow: Android Release Build
+# ============================================================================
+# This workflow builds a signed Android AAB/APK using secrets stored in GitHub.
+# The keystore is never committed to the repository.
+#
+# Required GitHub Secrets:
+#   - ANDROID_KEYSTORE_BASE64    : Base64-encoded keystore file
+#   - ANDROID_KEYSTORE_PASSWORD  : Keystore password (storepass)
+#   - ANDROID_KEY_ALIAS          : Key alias name
+#   - ANDROID_KEY_PASSWORD       : Key password (keypass)
+#
+# See docs/GITHUB_SECRETS_KEYSTORE_TUTORIAL.md for setup instructions.
+# ============================================================================
+
+name: 🚀 Android Release Build
+
+on:
+  # Manual trigger with options
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build output format'
+        required: true
+        default: 'aab'
+        type: choice
+        options:
+          - aab
+          - apk
+          - both
+
+  # Automatic trigger on release tags
+  push:
+    tags:
+      - 'v*.*.*'  # Matches v1.0.0, v2.1.3, etc.
+
+env:
+  DOTNET_VERSION: '10.0.x'
+  PROJECT_PATH: 'src/SingleTask/SingleTask.csproj'
+
+jobs:
+  build-android:
+    name: 📱 Build Signed Android App
+    runs-on: ubuntu-latest
+
+    steps:
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 1: Checkout Repository
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 2: Setup .NET SDK
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 🔧 Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 3: Setup Java JDK (Required for Android SDK)
+      # ─────────────────────────────────────────────────────────────────────
+      - name: ☕ Setup Java JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'microsoft'
+          java-version: '17'
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 4: Install MAUI Workload
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 📦 Install .NET MAUI Workload
+        run: |
+          dotnet workload install maui-android
+          dotnet workload list
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 5: Restore NuGet Packages
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 📚 Restore Dependencies
+        run: dotnet restore ${{ env.PROJECT_PATH }}
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 6: Decode Keystore from Base64 Secret
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 🔑 Decode Android Keystore
+        run: |
+          mkdir -p ${{ runner.temp }}/keystore
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > ${{ runner.temp }}/keystore/singletask.keystore
+          ls -la ${{ runner.temp }}/keystore/
+          echo "ANDROID_KEYSTORE_PATH=${{ runner.temp }}/keystore/singletask.keystore" >> $GITHUB_ENV
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 7: Build Signed Android App
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 🏗️ Build Android Release
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          PACKAGE_FORMAT="${{ github.event.inputs.build_type || 'aab' }}"
+          
+          if [ "$PACKAGE_FORMAT" = "both" ]; then
+            PACKAGE_FORMAT="aab;apk"
+          fi
+          
+          dotnet publish ${{ env.PROJECT_PATH }} \
+            -c Release \
+            -f net10.0-android \
+            -p:AndroidKeyStore=true \
+            -p:AndroidSigningKeyStore="${{ env.ANDROID_KEYSTORE_PATH }}" \
+            -p:AndroidSigningKeyAlias="${{ secrets.ANDROID_KEY_ALIAS }}" \
+            -p:AndroidSigningStorePass="${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" \
+            -p:AndroidSigningKeyPass="${{ secrets.ANDROID_KEY_PASSWORD }}" \
+            -p:AndroidPackageFormats="$PACKAGE_FORMAT"
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 8: List Build Output (Debug)
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 📋 List Build Output
+        run: |
+          echo "=== Publish folder ==="
+          find src/SingleTask/bin/Release -name "*.aab" -o -name "*.apk" 2>/dev/null || echo "No artifacts found"
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 9: Upload AAB Artifact
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 📤 Upload AAB Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-aab-signed
+          path: |
+            src/SingleTask/bin/Release/net10.0-android/publish/*.aab
+            src/SingleTask/bin/Release/net10.0-android/*.aab
+          if-no-files-found: warn
+          retention-days: 30
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 10: Upload APK Artifact
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 📤 Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk-signed
+          path: |
+            src/SingleTask/bin/Release/net10.0-android/publish/*.apk
+            src/SingleTask/bin/Release/net10.0-android/*.apk
+          if-no-files-found: warn
+          retention-days: 30
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 11: Cleanup Keystore (Security)
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 🧹 Cleanup Keystore
+        if: always()
+        run: |
+          rm -rf ${{ runner.temp }}/keystore
+          echo "✅ Keystore cleaned up"
+
+      # ─────────────────────────────────────────────────────────────────────
+      # STEP 12: Create GitHub Release (on tag push)
+      # ─────────────────────────────────────────────────────────────────────
+      - name: 🏷️ Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            src/SingleTask/bin/Release/net10.0-android/publish/*.aab
+            src/SingleTask/bin/Release/net10.0-android/publish/*.apk
+            src/SingleTask/bin/Release/net10.0-android/*.aab
+            src/SingleTask/bin/Release/net10.0-android/*.apk
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref, '-beta') || contains(github.ref, '-alpha') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

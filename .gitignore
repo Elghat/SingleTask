@@ -14,3 +14,7 @@ obj/
 # --- USER SPECIFIC ---
 *.user
 *.suo
+
+# --- Internal Doc ---
+Internal/
+scripts/
