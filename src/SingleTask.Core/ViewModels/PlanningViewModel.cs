@@ -166,9 +166,20 @@ public partial class PlanningViewModel : BaseViewModel
         if (task == null || task.IsCompleted) return;
 
         int oldIndex = Tasks.IndexOf(task);
-        if (oldIndex > 0)
+        // Find next pending (non-completed) task above
+        int targetIndex = -1;
+        for (int i = oldIndex - 1; i >= 0; i--)
         {
-            Tasks.Move(oldIndex, oldIndex - 1);
+            if (!Tasks[i].IsCompleted)
+            {
+                targetIndex = i;
+                break;
+            }
+        }
+
+        if (targetIndex >= 0)
+        {
+            Tasks.Move(oldIndex, targetIndex);
             await SaveTaskOrderAsync();
             RenumberTasks();
         }
@@ -180,9 +191,20 @@ public partial class PlanningViewModel : BaseViewModel
         if (task == null || task.IsCompleted) return;
 
         int oldIndex = Tasks.IndexOf(task);
-        if (oldIndex >= 0 && oldIndex < Tasks.Count - 1)
+        // Find next pending (non-completed) task below
+        int targetIndex = -1;
+        for (int i = oldIndex + 1; i < Tasks.Count; i++)
         {
-            Tasks.Move(oldIndex, oldIndex + 1);
+            if (!Tasks[i].IsCompleted)
+            {
+                targetIndex = i;
+                break;
+            }
+        }
+
+        if (targetIndex >= 0)
+        {
+            Tasks.Move(oldIndex, targetIndex);
             await SaveTaskOrderAsync();
             RenumberTasks();
         }
@@ -224,13 +246,26 @@ public partial class PlanningViewModel : BaseViewModel
 
     private void RenumberTasks()
     {
-        // FIFO Numbering: Bottom = 1, Top = Count
-        int count = Tasks.Count;
-        for (int i = 0; i < count; i++)
+        // FIFO Numbering: Only pending tasks get numbered (Bottom = 1, Top = N)
+        // Completed tasks get DisplayIndex = 0 (hidden)
+        var pendingTasks = Tasks.Where(t => !t.IsCompleted).ToList();
+        int pendingCount = pendingTasks.Count;
+
+        int pendingIndex = 0;
+        for (int i = 0; i < Tasks.Count; i++)
         {
             var task = Tasks[i];
-            task.DisplayIndex = count - i;
-            task.IsTop = (i == 0);
+            if (task.IsCompleted)
+            {
+                task.DisplayIndex = 0; // No number for completed
+                task.IsTop = false;
+            }
+            else
+            {
+                task.DisplayIndex = pendingCount - pendingIndex;
+                task.IsTop = (pendingIndex == 0);
+                pendingIndex++;
+            }
         }
     }
 }

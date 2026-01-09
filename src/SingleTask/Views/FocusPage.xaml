@@ -28,12 +28,13 @@
                 Text="{Binding TaskProgressText}" />
         </VerticalStackLayout>
 
-        <!--  Row 1: Task Title (Centered)  -->
-        <Label
-            Grid.Row="1"
-            Style="{StaticResource LargeTitleLabelStyle}"
-            Text="{Binding TaskTitle}"
-            VerticalOptions="Center" />
+        <!--  Row 1: Task Title (Centered, Scrollable for long text)  -->
+        <ScrollView Grid.Row="1" VerticalOptions="Center">
+            <Label
+                LineBreakMode="WordWrap"
+                Style="{StaticResource LargeTitleLabelStyle}"
+                Text="{Binding TaskTitle}" />
+        </ScrollView>
 
         <!--  Row 2: Actions  -->
         <Grid Grid.Row="2" ColumnDefinitions="*, *, *">
