@@ -1,0 +1,10 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+  SingleTask.UnitTests -> C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.43

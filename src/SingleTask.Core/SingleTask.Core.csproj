@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+    <!-- SEC-002: Use SQLCipher for encrypted database -->
+    <PackageReference Include="sqlite-net-sqlcipher" Version="1.9.172" />
+    <!-- Required for SecureStorage to store DB encryption key -->
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="10.0.0" />
   </ItemGroup>
 
 </Project>

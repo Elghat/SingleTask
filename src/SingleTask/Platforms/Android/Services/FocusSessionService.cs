@@ -7,7 +7,8 @@ using Android.Content.PM;
 
 namespace SingleTask.Platforms.Android.Services
 {
-    [Service(ForegroundServiceType = ForegroundService.TypeSpecialUse)]
+    // SEC-004: Explicitly mark internal service as not exported
+    [Service(Exported = false, ForegroundServiceType = ForegroundService.TypeSpecialUse)]
     public class FocusSessionService : Service
     {
         private const string CHANNEL_ID = "focus_channel";
@@ -27,11 +28,13 @@ namespace SingleTask.Platforms.Android.Services
 
             CreateNotificationChannel();
 
-            // Open App on click
+            // SEC-009: Use explicit intent construction instead of GetLaunchIntentForPackage
+            var launchIntent = new Intent(this, typeof(MainActivity));
+            launchIntent.SetFlags(ActivityFlags.SingleTop | ActivityFlags.ClearTop);
             var pendingIntent = PendingIntent.GetActivity(
                 this,
                 0,
-                PackageManager.GetLaunchIntentForPackage(PackageName!),
+                launchIntent,
                 PendingIntentFlags.Immutable);
 
             var notification = new NotificationCompat.Builder(this, CHANNEL_ID)

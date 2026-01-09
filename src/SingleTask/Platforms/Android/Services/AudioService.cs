@@ -16,7 +16,9 @@ public class AudioService : IAudioService
             }
             catch (Exception ex)
             {
+#if DEBUG
                 System.Diagnostics.Debug.WriteLine($"Audio Error: {ex.Message}");
+#endif
             }
         });
     }
@@ -40,7 +42,9 @@ public class AudioService : IAudioService
             }
             catch (Exception ex)
             {
+#if DEBUG
                 System.Diagnostics.Debug.WriteLine($"Audio Error: {ex.Message}");
+#endif
             }
         });
     }

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:label="Single Task" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true"></application>
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="35" />
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:allowBackup="false" android:icon="@mipmap/appicon" android:label="Single Task" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:networkSecurityConfig="@xml/network_security_config"></application>
+	<!-- 3.4: Raised minSdkVersion to 26 (Android 8.0) for security -->
+	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
+	<!-- SEC-010: Removed unused INTERNET and ACCESS_NETWORK_STATE permissions -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />

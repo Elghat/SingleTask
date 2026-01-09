@@ -32,7 +32,9 @@ public static class MauiProgram
         builder.Services.AddSingleton<SingleTask.Views.PlanningPage>();
 
         var dbPath = Path.Combine(FileSystem.AppDataDirectory, "SingleTask.db3");
-        builder.Services.AddSingleton<SingleTask.Core.Services.IDatabaseService>(s => new SingleTask.Core.Services.DatabaseService(dbPath));
+        builder.Services.AddSingleton<SingleTask.Core.Services.ISecureStorageService, SingleTask.Services.SecureStorageService>();
+        builder.Services.AddSingleton<SingleTask.Core.Services.IDatabaseService>(s =>
+            new SingleTask.Core.Services.DatabaseService(dbPath, s.GetRequiredService<SingleTask.Core.Services.ISecureStorageService>()));
 
         builder.Services.AddSingleton<SingleTask.Core.Services.INavigationService, SingleTask.Services.NavigationService>();
         builder.Services.AddSingleton<SingleTask.Core.Services.IAlertService, SingleTask.Services.AlertService>();

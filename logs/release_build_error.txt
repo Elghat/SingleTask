@@ -1,0 +1,18 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Release\net10.0\SingleTask.Core.dll
+  SingleTask -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\bin\Release\net10.0-android\SingleTask.dll
+  SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Release\net10.0\SingleTask.Core.dll
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\targets\Microsoft.Android.Sdk.Tooling.targets(72,5): warning XA1006: The TargetFrameworkVersion (Android API level 36) is higher than the targetSdkVersion (35). Please increase the `android:targetSdkVersion` in the `AndroidManifest.xml` so that the API levels match. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(2697,2): error MSB6006: "jarsigner.exe" exited with code 1. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+
+Build FAILED.
+
+C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\Platforms\Android\AndroidManifest.xml : warning XA4211: AndroidManifest.xml //uses-sdk/@android:targetSdkVersion '35' is less than $(TargetPlatformVersion) '36.0'. Using API-36 for ACW compilation. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\targets\Microsoft.Android.Sdk.Tooling.targets(72,5): warning XA1006: The TargetFrameworkVersion (Android API level 36) is higher than the targetSdkVersion (35). Please increase the `android:targetSdkVersion` in the `AndroidManifest.xml` so that the API levels match. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+C:\Program Files\dotnet\packs\Microsoft.Android.Sdk.Windows\36.1.2\tools\Xamarin.Android.Common.targets(2697,2): error MSB6006: "jarsigner.exe" exited with code 1. [C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask\SingleTask.csproj::TargetFramework=net10.0-android]
+    2 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:02.37

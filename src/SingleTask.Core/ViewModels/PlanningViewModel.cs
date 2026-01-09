@@ -21,6 +21,14 @@ public partial class PlanningViewModel : BaseViewModel
 
     private readonly HashSet<string> _approvedDuplicates = new(StringComparer.OrdinalIgnoreCase);
 
+    // SEC-005: Maximum allowed task title length to prevent DoS
+    private const int MaxTaskTitleLength = 200;
+
+    // SEC-012: Rate limiting to prevent command flooding
+    private DateTime _lastAddTime = DateTime.MinValue;
+    private DateTime _lastDeleteTime = DateTime.MinValue;
+    private const int CommandCooldownMs = 500;
+
     public ObservableCollection<TaskItem> Tasks { get; } = new();
 
     public bool HasPendingTasks => Tasks.Any(t => t.Status == Models.TaskStatus.Pending);
@@ -66,10 +74,23 @@ public partial class PlanningViewModel : BaseViewModel
     [RelayCommand]
     private async Task AddTaskAsync()
     {
+        // SEC-012: Debounce rapid calls
+        if ((DateTime.UtcNow - _lastAddTime).TotalMilliseconds < CommandCooldownMs)
+            return;
+        _lastAddTime = DateTime.UtcNow;
+
         if (string.IsNullOrWhiteSpace(NewTaskTitle))
             return;
 
         var cleanTitle = NewTaskTitle.Trim();
+
+        // SEC-005: Input length validation to prevent memory exhaustion and DB bloat
+        if (cleanTitle.Length > MaxTaskTitleLength)
+        {
+            await _alertService.ShowAlertAsync("Title Too Long",
+                $"Task title cannot exceed {MaxTaskTitleLength} characters.", "OK");
+            return;
+        }
 
         // Smart Duplicate Check
         bool isDuplicate = Tasks.Any(t => t.Title.Equals(cleanTitle, StringComparison.OrdinalIgnoreCase));
@@ -125,6 +146,11 @@ public partial class PlanningViewModel : BaseViewModel
     [RelayCommand]
     private async Task DeleteTaskAsync(TaskItem task)
     {
+        // SEC-012: Debounce rapid calls
+        if ((DateTime.UtcNow - _lastDeleteTime).TotalMilliseconds < CommandCooldownMs)
+            return;
+        _lastDeleteTime = DateTime.UtcNow;
+
         if (task == null) return;
 
         if (await _databaseService.DeleteTaskAsync(task) > 0)

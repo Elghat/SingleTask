@@ -1,0 +1,126 @@
+Build started 09/01/2026 21:04:53.
+     1>Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" on node 1 (Restore target(s)).
+     1>_GetAllRestoreProjectPathItems:
+         Determining projects to restore...
+     1>Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" (1) is building "C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj" (2:4) on node 1 (_GenerateProjectRestoreGraph target(s)).
+     2>AddPrunePackageReferences:
+         Loading prune package data from PrunePackageData folder
+         Failed to load prune package data from PrunePackageData folder, loading from targeting packs instead
+         Looking for targeting packs in C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref
+         Pack directories found: C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.0
+         Found package overrides file C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\10.0.0\data\PackageOverrides.txt
+     2>Done Building Project "C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj" (_GenerateProjectRestoreGraph target(s)).
+     1>Restore:
+         X.509 certificate chain validation will use the default trust store selected by .NET for code signing.
+         X.509 certificate chain validation will use the default trust store selected by .NET for timestamping.
+         Assets file has not changed. Skipping assets file writing. Path: C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\obj\project.assets.json
+         Assets file has not changed. Skipping assets file writing. Path: C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\obj\project.assets.json
+         Restored C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj (in 28 ms).
+         Restored C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj (in 28 ms).
+         
+         NuGet Config files used:
+             C:\Users\Gragware\AppData\Roaming\NuGet\NuGet.Config
+             C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.FallbackLocation.config
+             C:\Program Files (x86)\NuGet\Config\Microsoft.VisualStudio.Offline.config
+         
+         Feeds used:
+             https://api.nuget.org/v3/index.json
+             C:\Program Files (x86)\Microsoft SDKs\NuGetPackages\
+             C:\Program Files\dotnet\library-packs
+         All projects are up-to-date for restore.
+     1>Done Building Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" (Restore target(s)).
+   1:7>Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" on node 1 (VSTest target(s)).
+     1>BuildProject:
+         Build started, please wait...
+   1:7>Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" (1:7) is building "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" (1:8) on node 1 (default targets).
+   1:8>Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" (1:8) is building "C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj" (2:6) on node 1 (default targets).
+     2>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\SingleTask.Core.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         SingleTask.Core -> C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\bin\Debug\net10.0\SingleTask.Core.dll
+     2>Done Building Project "C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\SingleTask.Core.csproj" (default targets).
+     1>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\SingleTask.UnitTests.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       _CopyOutOfDateSourceItemsToOutputDirectory:
+       Skipping target "_CopyOutOfDateSourceItemsToOutputDirectory" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildRuntimeConfigurationFiles:
+       Skipping target "GenerateBuildRuntimeConfigurationFiles" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         SingleTask.UnitTests -> C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll
+     1>Done Building Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" (default targets).
+     1>BuildProject:
+         Build completed.
+         
+Test run for C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\bin\Debug\net10.0\SingleTask.UnitTests.dll (.NETCoreApp,Version=v10.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.0)
+[xUnit.net 00:00:00.07]   Discovering: SingleTask.UnitTests
+[xUnit.net 00:00:00.10]   Discovered:  SingleTask.UnitTests
+[xUnit.net 00:00:00.12]   Starting:    SingleTask.UnitTests
+[xUnit.net 00:00:00.17]     SingleTask.UnitTests.Services.DatabaseServiceTests.DatabaseService_ShouldInitializedAndSaveItem [FAIL]
+[xUnit.net 00:00:00.17]       Microsoft.Maui.ApplicationModel.NotImplementedInReferenceAssemblyException : This functionality is not implemented in the portable version of this assembly. You should reference the NuGet package from your main application project in order to reference the platform-specific implementation.
+[xUnit.net 00:00:00.17]       Stack Trace:
+[xUnit.net 00:00:00.17]            at Microsoft.Maui.Storage.SecureStorageImplementation.PlatformGetAsync(String key)
+[xUnit.net 00:00:00.17]            at Microsoft.Maui.Storage.SecureStorageImplementation.GetAsync(String key)
+[xUnit.net 00:00:00.17]         C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\Services\DatabaseService.cs(46,0): at SingleTask.Core.Services.DatabaseService.GetOrCreateEncryptionKeyAsync()
+[xUnit.net 00:00:00.17]         C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\Services\DatabaseService.cs(28,0): at SingleTask.Core.Services.DatabaseService.InitAsync()
+[xUnit.net 00:00:00.17]         C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\Services\DatabaseService.cs(152,0): at SingleTask.Core.Services.DatabaseService.SaveItemAsync(TestEntity item)
+[xUnit.net 00:00:00.17]         C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\Services\DatabaseServiceTests.cs(17,0): at SingleTask.UnitTests.Services.DatabaseServiceTests.DatabaseService_ShouldInitializedAndSaveItem()
+[xUnit.net 00:00:00.17]         --- End of stack trace from previous location ---
+  Passed SingleTask.UnitTests.ViewModels.BaseViewModelTests.BaseViewModel_ShouldImplementINotifyPropertyChanged [2 ms]
+  Passed SingleTask.UnitTests.UnitTest1.Test1 [2 ms]
+  Failed SingleTask.UnitTests.Services.DatabaseServiceTests.DatabaseService_ShouldInitializedAndSaveItem [7 ms]
+  Error Message:
+   Microsoft.Maui.ApplicationModel.NotImplementedInReferenceAssemblyException : This functionality is not implemented in the portable version of this assembly. You should reference the NuGet package from your main application project in order to reference the platform-specific implementation.
+  Stack Trace:
+     at Microsoft.Maui.Storage.SecureStorageImplementation.PlatformGetAsync(String key)
+   at Microsoft.Maui.Storage.SecureStorageImplementation.GetAsync(String key)
+   at SingleTask.Core.Services.DatabaseService.GetOrCreateEncryptionKeyAsync() in C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\Services\DatabaseService.cs:line 46
+   at SingleTask.Core.Services.DatabaseService.InitAsync() in C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\Services\DatabaseService.cs:line 28
+   at SingleTask.Core.Services.DatabaseService.SaveItemAsync(TestEntity item) in C:\ProjetAntigravity\SingleTaskRound2\src\SingleTask.Core\Services\DatabaseService.cs:line 152
+   at SingleTask.UnitTests.Services.DatabaseServiceTests.DatabaseService_ShouldInitializedAndSaveItem() in C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\Services\DatabaseServiceTests.cs:line 17
+--- End of stack trace from previous location ---
+  Passed SingleTask.UnitTests.ViewModels.CelebrationViewModelTests.DismissCommand_NavigatesToPlanningPage_Root [58 ms]
+  Passed SingleTask.UnitTests.PerformanceTests.LoadTasks_With100Items_CompletesSuccessfully [63 ms]
+  Passed SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_LastTask_NavigatesToCelebration [65 ms]
+  Passed SingleTask.UnitTests.ViewModels.PlanningViewModelTests.StartFocus_StartsFirstOrderedTask [66 ms]
+  Passed SingleTask.UnitTests.ViewModels.FocusViewModelTests.Initialize_SetsProperties [2 ms]
+[xUnit.net 00:00:00.24]   Finished:    SingleTask.UnitTests
+  Passed SingleTask.UnitTests.ViewModels.FocusViewModelTests.CompleteTask_WithNextTask_UpdatesToNext [2 ms]
+  Passed SingleTask.UnitTests.ViewModels.PlanningViewModelTests.AddTask_ValidTitle_AddsToCollectionAndService [5 ms]
+  Passed SingleTask.UnitTests.ViewModels.PlanningViewModelTests.SelectTask_ChecksPermissions_BeforeNavigating [5 ms]
+  Passed SingleTask.UnitTests.ViewModels.PlanningViewModelTests.SelectTask_WithPermission_DoesNotRequest [1 ms]
+
+Test Run Failed.
+Total tests: 12
+     Passed: 11
+     Failed: 1
+ Total time: 0,6516 Seconds
+       _VSTestConsole:
+         MSB4181: The "VSTestTask" task returned false but did not log an error.
+     1>Done Building Project "C:\ProjetAntigravity\SingleTaskRound2\tests\SingleTask.UnitTests\SingleTask.UnitTests.csproj" (VSTest target(s)) -- FAILED.
+
+Build FAILED.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.08

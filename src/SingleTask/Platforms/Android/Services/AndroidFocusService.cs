@@ -72,7 +72,9 @@ namespace SingleTask.Platforms.Android.Services
             }
             catch (Exception ex)
             {
+#if DEBUG
                 System.Diagnostics.Debug.WriteLine($"Audio Playback Failed: {ex.Message}");
+#endif
             }
         }
 
