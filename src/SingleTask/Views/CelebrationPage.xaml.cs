@@ -13,8 +13,17 @@ public partial class CelebrationPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        // Trigger simple confetti/celebration animation
-        await TriggerCelebration();
+        // FR-001: Wrap async void event handler in try-catch
+        try
+        {
+            await TriggerCelebration();
+        }
+        catch (Exception ex)
+        {
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine($"[CelebrationPage.OnAppearing] Error: {ex.Message}");
+#endif
+        }
     }
 
     private async Task TriggerCelebration()
@@ -23,7 +32,16 @@ public partial class CelebrationPage : ContentPage
         await this.Content.ScaleTo(0.9, 100);
         await this.Content.ScaleTo(1.0, 200, Easing.SpringOut);
 
-        // Haptic
-        try { HapticFeedback.Perform(HapticFeedbackType.LongPress); } catch { }
+        // Haptic - FR-003: Add debug logging to catch block
+        try
+        {
+            HapticFeedback.Perform(HapticFeedbackType.LongPress);
+        }
+        catch (Exception ex)
+        {
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine($"[CelebrationPage.TriggerCelebration] Haptic error: {ex.Message}");
+#endif
+        }
     }
 }

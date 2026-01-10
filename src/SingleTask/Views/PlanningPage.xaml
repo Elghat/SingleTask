@@ -29,139 +29,144 @@
                 TextColor="{StaticResource InkGrey}" />
         </VerticalStackLayout>
 
-        <!--  Row 1: Task List (ScrollView)  -->
-        <ScrollView Grid.Row="1" Margin="0,20">
-            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Tasks}" Spacing="12">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate x:DataType="models:TaskItem">
-                        <Border Style="{StaticResource CardSurfaceStyle}">
-                            <Border.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding IsCompleted}"
-                                    TargetType="Border"
-                                    Value="True">
-                                    <Setter Property="Opacity" Value="0.5" />
-                                </DataTrigger>
-                            </Border.Triggers>
-                            <!--  Main container: trash button stays interactive  -->
-                            <Grid Padding="15" ColumnDefinitions="*, Auto">
-                                <!--  Content wrapper: becomes InputTransparent when completed  -->
-                                <Grid Grid.Column="0" ColumnDefinitions="Auto, *, Auto">
-                                    <Grid.Triggers>
+        <!--  Row 1: Task List (FR-005: CollectionView for virtualization)  -->
+        <CollectionView
+            Grid.Row="1"
+            Margin="0,20"
+            ItemsSource="{Binding Tasks}"
+            SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="12" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:TaskItem">
+                    <Border Style="{StaticResource CardSurfaceStyle}">
+                        <Border.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsCompleted}"
+                                TargetType="Border"
+                                Value="True">
+                                <Setter Property="Opacity" Value="0.5" />
+                            </DataTrigger>
+                        </Border.Triggers>
+                        <!--  Main container: trash button stays interactive  -->
+                        <Grid Padding="15" ColumnDefinitions="*, Auto">
+                            <!--  Content wrapper: becomes InputTransparent when completed  -->
+                            <Grid Grid.Column="0" ColumnDefinitions="Auto, *, Auto">
+                                <Grid.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsCompleted}"
+                                        TargetType="Grid"
+                                        Value="True">
+                                        <Setter Property="InputTransparent" Value="True" />
+                                    </DataTrigger>
+                                </Grid.Triggers>
+
+                                <!--  Index  -->
+                                <Label
+                                    Grid.Column="0"
+                                    Margin="0,0,10,0"
+                                    FontSize="18"
+                                    Text="{Binding DisplayIndex, StringFormat='{0}.'}"
+                                    TextColor="{StaticResource InkGrey}"
+                                    VerticalOptions="Center">
+                                    <Label.Triggers>
                                         <DataTrigger
                                             Binding="{Binding IsCompleted}"
-                                            TargetType="Grid"
+                                            TargetType="Label"
                                             Value="True">
-                                            <Setter Property="InputTransparent" Value="True" />
+                                            <Setter Property="IsVisible" Value="False" />
                                         </DataTrigger>
-                                    </Grid.Triggers>
+                                    </Label.Triggers>
+                                </Label>
 
-                                    <!--  Index  -->
-                                    <Label
-                                        Grid.Column="0"
-                                        Margin="0,0,10,0"
-                                        FontSize="18"
-                                        Text="{Binding DisplayIndex, StringFormat='{0}.'}"
-                                        TextColor="{StaticResource InkGrey}"
-                                        VerticalOptions="Center">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsCompleted}"
-                                                TargetType="Label"
-                                                Value="True">
-                                                <Setter Property="IsVisible" Value="False" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-
-                                    <!--  Title  -->
-                                    <Label
-                                        Grid.Column="1"
-                                        FontAttributes="Bold"
-                                        FontSize="18"
-                                        Text="{Binding Title}"
-                                        VerticalOptions="Center">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsCompleted}"
-                                                TargetType="Label"
-                                                Value="True">
-                                                <Setter Property="TextDecorations" Value="Strikethrough" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-
-                                    <!--  Reordering  -->
-                                    <HorizontalStackLayout
-                                        Grid.Column="2"
-                                        Spacing="0"
-                                        VerticalOptions="Center">
-                                        <ImageButton
-                                            Padding="8"
-                                            BackgroundColor="Transparent"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=MoveTaskDownCommand}"
-                                            CommandParameter="{Binding .}"
-                                            HeightRequest="40"
-                                            Source="arrow_down"
-                                            WidthRequest="40">
-                                            <ImageButton.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding CanMoveDown}"
-                                                    TargetType="ImageButton"
-                                                    Value="False">
-                                                    <Setter Property="Opacity" Value="0" />
-                                                    <Setter Property="InputTransparent" Value="True" />
-                                                </DataTrigger>
-                                            </ImageButton.Triggers>
-                                        </ImageButton>
-                                        <ImageButton
-                                            Padding="8"
-                                            BackgroundColor="Transparent"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=MoveTaskUpCommand}"
-                                            CommandParameter="{Binding .}"
-                                            HeightRequest="40"
-                                            Source="arrow_up"
-                                            WidthRequest="40">
-                                            <ImageButton.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding CanMoveUp}"
-                                                    TargetType="ImageButton"
-                                                    Value="False">
-                                                    <Setter Property="Opacity" Value="0" />
-                                                    <Setter Property="InputTransparent" Value="True" />
-                                                </DataTrigger>
-                                            </ImageButton.Triggers>
-                                        </ImageButton>
-                                    </HorizontalStackLayout>
-                                </Grid>
-
-                                <!--  Trash button: always interactive, counter-opacity when completed  -->
-                                <ImageButton
+                                <!--  Title  -->
+                                <Label
                                     Grid.Column="1"
-                                    Padding="8"
-                                    BackgroundColor="Transparent"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=DeleteTaskCommand}"
-                                    CommandParameter="{Binding .}"
-                                    HeightRequest="40"
-                                    HorizontalOptions="End"
-                                    Source="trash"
-                                    VerticalOptions="Center"
-                                    WidthRequest="40">
-                                    <ImageButton.Triggers>
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="{Binding Title}"
+                                    VerticalOptions="Center">
+                                    <Label.Triggers>
                                         <DataTrigger
                                             Binding="{Binding IsCompleted}"
-                                            TargetType="ImageButton"
+                                            TargetType="Label"
                                             Value="True">
-                                            <Setter Property="Opacity" Value="2" />
+                                            <Setter Property="TextDecorations" Value="Strikethrough" />
                                         </DataTrigger>
-                                    </ImageButton.Triggers>
-                                </ImageButton>
+                                    </Label.Triggers>
+                                </Label>
+
+                                <!--  Reordering  -->
+                                <HorizontalStackLayout
+                                    Grid.Column="2"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+                                    <ImageButton
+                                        Padding="8"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=MoveTaskDownCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="40"
+                                        Source="arrow_down"
+                                        WidthRequest="40">
+                                        <ImageButton.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding CanMoveDown}"
+                                                TargetType="ImageButton"
+                                                Value="False">
+                                                <Setter Property="Opacity" Value="0" />
+                                                <Setter Property="InputTransparent" Value="True" />
+                                            </DataTrigger>
+                                        </ImageButton.Triggers>
+                                    </ImageButton>
+                                    <ImageButton
+                                        Padding="8"
+                                        BackgroundColor="Transparent"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=MoveTaskUpCommand}"
+                                        CommandParameter="{Binding .}"
+                                        HeightRequest="40"
+                                        Source="arrow_up"
+                                        WidthRequest="40">
+                                        <ImageButton.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding CanMoveUp}"
+                                                TargetType="ImageButton"
+                                                Value="False">
+                                                <Setter Property="Opacity" Value="0" />
+                                                <Setter Property="InputTransparent" Value="True" />
+                                            </DataTrigger>
+                                        </ImageButton.Triggers>
+                                    </ImageButton>
+                                </HorizontalStackLayout>
                             </Grid>
-                        </Border>
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </VerticalStackLayout>
-        </ScrollView>
+
+                            <!--  Trash button: always interactive, counter-opacity when completed  -->
+                            <ImageButton
+                                Grid.Column="1"
+                                Padding="8"
+                                BackgroundColor="Transparent"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:PlanningViewModel}}, Path=DeleteTaskCommand}"
+                                CommandParameter="{Binding .}"
+                                HeightRequest="40"
+                                HorizontalOptions="End"
+                                Source="trash"
+                                VerticalOptions="Center"
+                                WidthRequest="40">
+                                <ImageButton.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsCompleted}"
+                                        TargetType="ImageButton"
+                                        Value="True">
+                                        <Setter Property="Opacity" Value="2" />
+                                    </DataTrigger>
+                                </ImageButton.Triggers>
+                            </ImageButton>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
 
         <!--  Row 2: Input Area  -->
         <Border

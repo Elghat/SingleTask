@@ -236,14 +236,19 @@ public partial class PlanningViewModel : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// FR-004: Batch save task order in single transaction for performance.
+    /// </summary>
     private async Task SaveTaskOrderAsync()
     {
         // Update Order field for all tasks based on current visual position
         for (int i = 0; i < Tasks.Count; i++)
         {
             Tasks[i].Order = i;
-            await _databaseService.SaveTaskAsync(Tasks[i]);
         }
+
+        // Single transaction batch save instead of N individual saves
+        await _databaseService.SaveTasksAsync(Tasks);
     }
 
     [RelayCommand]

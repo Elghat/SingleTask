@@ -51,7 +51,8 @@ public partial class FocusViewModel : ObservableObject
 
         if (_focusService.CurrentFocusedTask != null)
         {
-            Initialize(_focusService.CurrentFocusedTask);
+            // FR-001: Fire-and-forget with proper exception handling
+            _ = InitializeAsync(_focusService.CurrentFocusedTask);
         }
     }
 
@@ -75,12 +76,25 @@ public partial class FocusViewModel : ObservableObject
         }
     }
 
-    public async void Initialize(TaskItem task)
+    /// <summary>
+    /// FR-001: Async initialization with proper exception handling.
+    /// Converted from async void to async Task to prevent unhandled exceptions.
+    /// </summary>
+    public async Task InitializeAsync(TaskItem task)
     {
-        CurrentTask = task;
-        TaskTitle = task.Title;
-        IsCelebrating = false;
-        await UpdateTaskProgressAsync();
+        try
+        {
+            CurrentTask = task;
+            TaskTitle = task.Title;
+            IsCelebrating = false;
+            await UpdateTaskProgressAsync();
+        }
+        catch (Exception ex)
+        {
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine($"[FocusViewModel.InitializeAsync] Error: {ex.Message}");
+#endif
+        }
     }
 
     [RelayCommand]
@@ -105,7 +119,7 @@ public partial class FocusViewModel : ObservableObject
                 _nativeFocusService.TriggerHapticFeedback();
                 await _nativeFocusService.PlaySuccessSoundAsync();
 
-                Initialize(nextTask);
+                await InitializeAsync(nextTask);
                 _focusService.UpdateFocusSession(nextTask);
             }
             else
@@ -142,7 +156,7 @@ public partial class FocusViewModel : ObservableObject
         if (nextTask != null)
         {
             _nativeFocusService.TriggerHapticFeedback();
-            Initialize(nextTask);
+            await InitializeAsync(nextTask);
             _focusService.UpdateFocusSession(nextTask);
         }
         else

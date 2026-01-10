@@ -7,7 +7,7 @@ namespace SingleTask.Core.Services;
 /// SEC-002: Database service with SQLCipher encryption.
 /// Automatically migrates existing unencrypted databases to encrypted format.
 /// </summary>
-public class DatabaseService : IDatabaseService
+public class DatabaseService : IDatabaseService, IAsyncDisposable
 {
     private SQLiteAsyncConnection? _database;
     private readonly string _dbPath;
@@ -35,7 +35,6 @@ public class DatabaseService : IDatabaseService
         var options = new SQLiteConnectionString(_dbPath, true, key: encryptionKey);
         _database = new SQLiteAsyncConnection(options);
 
-        await _database.CreateTableAsync<TestEntity>();
         await _database.CreateTableAsync<TaskItem>();
     }
 
@@ -75,9 +74,12 @@ public class DatabaseService : IDatabaseService
             // Success - already encrypted, no migration needed
             return;
         }
-        catch
+        catch (Exception ex)
         {
             // Database is unencrypted or uses different key, need to migrate
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine($"[DatabaseService.MigrateUnencryptedDatabase] Check encrypted: {ex.Message}");
+#endif
         }
 
         // Backup unencrypted DB
@@ -90,18 +92,18 @@ public class DatabaseService : IDatabaseService
 
             // Try to read tables - if this fails, DB might be corrupted
             List<TaskItem> tasks;
-            List<TestEntity> entities;
             try
             {
                 unencryptedDb.CreateTable<TaskItem>();
-                unencryptedDb.CreateTable<TestEntity>();
                 tasks = unencryptedDb.Table<TaskItem>().ToList();
-                entities = unencryptedDb.Table<TestEntity>().ToList();
             }
-            catch
+            catch (Exception ex)
             {
                 // Failed to read - might be encrypted with different key or corrupted
                 // Start fresh
+#if DEBUG
+                System.Diagnostics.Debug.WriteLine($"[DatabaseService.MigrateUnencryptedDatabase] Read tables: {ex.Message}");
+#endif
                 unencryptedDb.Close();
                 File.Delete(_dbPath);
                 return;
@@ -112,13 +114,10 @@ public class DatabaseService : IDatabaseService
             var encOptions = new SQLiteConnectionString(tempEncryptedPath, true, key: encryptionKey);
             using var encryptedDb = new SQLiteConnection(encOptions);
             encryptedDb.CreateTable<TaskItem>();
-            encryptedDb.CreateTable<TestEntity>();
 
             // Copy data
             foreach (var task in tasks)
                 encryptedDb.Insert(task);
-            foreach (var entity in entities)
-                encryptedDb.Insert(entity);
             encryptedDb.Close();
 
             // Replace old DB with encrypted one
@@ -127,9 +126,12 @@ public class DatabaseService : IDatabaseService
 
             // Note: backup is preserved at backupPath for safety
         }
-        catch
+        catch (Exception ex)
         {
             // Migration failed - cleanup temp file if exists
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine($"[DatabaseService.MigrateUnencryptedDatabase] Migration failed: {ex.Message}");
+#endif
             if (File.Exists(tempEncryptedPath))
                 File.Delete(tempEncryptedPath);
 
@@ -140,27 +142,6 @@ public class DatabaseService : IDatabaseService
                 // Don't restore - just start fresh with encrypted DB
             }
         }
-    }
-
-    public async Task<List<TestEntity>> GetItemsAsync()
-    {
-        await InitAsync();
-        return await _database!.Table<TestEntity>().ToListAsync();
-    }
-
-    public async Task<int> SaveItemAsync(TestEntity item)
-    {
-        await InitAsync();
-        if (item.Id != 0)
-            return await _database!.UpdateAsync(item);
-        else
-            return await _database!.InsertAsync(item);
-    }
-
-    public async Task<int> DeleteItemAsync(TestEntity item)
-    {
-        await InitAsync();
-        return await _database!.DeleteAsync(item);
     }
 
     public async Task<List<TaskItem>> GetTasksAsync()
@@ -184,6 +165,24 @@ public class DatabaseService : IDatabaseService
         return await _database!.DeleteAsync(item);
     }
 
+    /// <summary>
+    /// FR-004: Batch save multiple tasks in a single transaction for performance.
+    /// </summary>
+    public async Task SaveTasksAsync(IEnumerable<TaskItem> tasks)
+    {
+        await InitAsync();
+        await _database!.RunInTransactionAsync(db =>
+        {
+            foreach (var task in tasks)
+            {
+                if (task.Id != 0)
+                    db.Update(task);
+                else
+                    db.Insert(task);
+            }
+        });
+    }
+
     public async Task CloseAsync()
     {
         if (_database != null)
@@ -191,5 +190,13 @@ public class DatabaseService : IDatabaseService
             await _database.CloseAsync();
             _database = null;
         }
+    }
+
+    /// <summary>
+    /// FR-014: Implement IAsyncDisposable for proper resource cleanup.
+    /// </summary>
+    public async ValueTask DisposeAsync()
+    {
+        await CloseAsync();
     }
 }

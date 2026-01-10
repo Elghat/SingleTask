@@ -39,7 +39,7 @@ public class FocusViewModelTests
     }
 
     [Fact]
-    public void Initialize_SetsProperties()
+    public async Task InitializeAsync_SetsProperties()
     {
         // Arrange
         var task = new TaskItem { Title = "Focus Task" };
@@ -47,7 +47,7 @@ public class FocusViewModelTests
             .ReturnsAsync(new System.Collections.Generic.List<TaskItem> { task });
 
         // Act
-        _viewModel.Initialize(task);
+        await _viewModel.InitializeAsync(task);
 
         // Assert
         Assert.Equal("Focus Task", _viewModel.TaskTitle);
@@ -64,7 +64,7 @@ public class FocusViewModelTests
         _mockDatabaseService.Setup(db => db.GetTasksAsync())
             .ReturnsAsync(new System.Collections.Generic.List<TaskItem> { currentTask, nextTask });
 
-        _viewModel.Initialize(currentTask);
+        await _viewModel.InitializeAsync(currentTask);
 
         // Act
         await _viewModel.CompleteTaskCommand.ExecuteAsync(null);
@@ -99,7 +99,7 @@ public class FocusViewModelTests
         _mockDatabaseService.Setup(db => db.GetTasksAsync())
             .ReturnsAsync(new System.Collections.Generic.List<TaskItem> { currentTask }); // No others pending
 
-        _viewModel.Initialize(currentTask);
+        await _viewModel.InitializeAsync(currentTask);
 
         // Act
         await _viewModel.CompleteTaskCommand.ExecuteAsync(null);

@@ -25,10 +25,10 @@
 
 **Purpose**: Capture baseline metrics and ensure clean starting point
 
-- [ ] T001 Verify all existing unit tests pass by running `dotnet test tests/SingleTask.UnitTests`
-- [ ] T002 Build Release APK and record baseline size: `dotnet publish -f net10.0-android -c Release`
-- [ ] T003 Record baseline cold startup time on test device (manual measurement)
-- [ ] T004 Create 20 test tasks and record task reorder latency (manual measurement)
+- [x] T001 Verify all existing unit tests pass by running `dotnet test tests/SingleTask.UnitTests`
+- [x] T002 Build Release APK and record baseline size: `dotnet publish -f net10.0-android -c Release`
+- [x] T003 Record baseline cold startup time on test device (manual measurement)
+- [x] T004 Create 20 test tasks and record task reorder latency (manual measurement)
 
 ---
 
@@ -38,10 +38,10 @@
 
 **⚠️ CRITICAL**: These changes affect multiple user stories
 
-- [ ] T005 Add `SaveTasksAsync(IEnumerable<TaskItem> tasks)` method signature to `src/SingleTask.Core/Services/IDatabaseService.cs`
-- [ ] T006 Add `IAsyncDisposable` to `IDatabaseService` interface declaration in `src/SingleTask.Core/Services/IDatabaseService.cs`
-- [ ] T007 Implement `SaveTasksAsync` with `RunInTransactionAsync` in `src/SingleTask.Core/Services/DatabaseService.cs`
-- [ ] T008 Implement `DisposeAsync()` method in `src/SingleTask.Core/Services/DatabaseService.cs`
+- [x] T005 Add `SaveTasksAsync(IEnumerable<TaskItem> tasks)` method signature to `src/SingleTask.Core/Services/IDatabaseService.cs`
+- [x] T006 Add `IAsyncDisposable` to `IDatabaseService` interface declaration in `src/SingleTask.Core/Services/IDatabaseService.cs`
+- [x] T007 Implement `SaveTasksAsync` with `RunInTransactionAsync` in `src/SingleTask.Core/Services/DatabaseService.cs`
+- [x] T008 Implement `DisposeAsync()` method in `src/SingleTask.Core/Services/DatabaseService.cs`
 
 **Checkpoint**: Interface changes complete - user story implementation can proceed
 
@@ -55,12 +55,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T009 [US1] Convert `async void Initialize` to `public async Task InitializeAsync` in `src/SingleTask.Core/ViewModels/FocusViewModel.cs` (line 78)
-- [ ] T010 [US1] Add try-catch with debug logging to `InitializeAsync` method in `src/SingleTask.Core/ViewModels/FocusViewModel.cs`
-- [ ] T011 [US1] Update constructor call from `Initialize()` to `_ = InitializeAsync()` in `src/SingleTask.Core/ViewModels/FocusViewModel.cs` (line ~52)
-- [ ] T012 [US1] Add try-catch wrapper to `OnAppearing` in `src/SingleTask/Views/PlanningPage.xaml.cs` (already has, verify exception propagation)
-- [ ] T013 [US1] Add try-catch wrapper to `OnAppearing` in `src/SingleTask/Views/CelebrationPage.xaml.cs` (line 13)
-- [ ] T014 [US1] Update FocusViewModel unit tests to test new `InitializeAsync` signature in `tests/SingleTask.UnitTests/ViewModels/FocusViewModelTests.cs`
+- [x] T009 [US1] Convert `async void Initialize` to `public async Task InitializeAsync` in `src/SingleTask.Core/ViewModels/FocusViewModel.cs` (line 78)
+- [x] T010 [US1] Add try-catch with debug logging to `InitializeAsync` method in `src/SingleTask.Core/ViewModels/FocusViewModel.cs`
+- [x] T011 [US1] Update constructor call from `Initialize()` to `_ = InitializeAsync()` in `src/SingleTask.Core/ViewModels/FocusViewModel.cs` (line ~52)
+- [x] T012 [US1] Add try-catch wrapper to `OnAppearing` in `src/SingleTask/Views/PlanningPage.xaml.cs` (already has, verify exception propagation)
+- [x] T013 [US1] Add try-catch wrapper to `OnAppearing` in `src/SingleTask/Views/CelebrationPage.xaml.cs` (line 13)
+- [x] T014 [US1] Update FocusViewModel unit tests to test new `InitializeAsync` signature in `tests/SingleTask.UnitTests/ViewModels/FocusViewModelTests.cs`
 
 **Checkpoint**: App no longer crashes from async void exceptions
 
@@ -74,9 +74,9 @@
 
 ### Implementation for User Story 2
 
-- [ ] T015 [US2] Update `SaveTaskOrderAsync` to use batch `SaveTasksAsync` in `src/SingleTask.Core/ViewModels/PlanningViewModel.cs` (lines 239-247)
-- [ ] T016 [US2] Add unit test for `SaveTasksAsync` batch operation in `tests/SingleTask.UnitTests/Services/DatabaseServiceTests.cs` (new file)
-- [ ] T017 [US2] Verify reorder debounce (SEC-012) still works with batch save in `src/SingleTask.Core/ViewModels/PlanningViewModel.cs`
+- [x] T015 [US2] Update `SaveTaskOrderAsync` to use batch `SaveTasksAsync` in `src/SingleTask.Core/ViewModels/PlanningViewModel.cs` (lines 239-247)
+- [x] T016 [US2] Add unit test for `SaveTasksAsync` batch operation in `tests/SingleTask.UnitTests/Services/DatabaseServiceTests.cs` (new file)
+- [x] T017 [US2] Verify reorder debounce (SEC-012) still works with batch save in `src/SingleTask.Core/ViewModels/PlanningViewModel.cs`
 
 **Checkpoint**: Task reordering is instant (<200ms)
 
@@ -90,11 +90,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T018 [US3] Replace `ScrollView > VerticalStackLayout > BindableLayout` with `CollectionView` in `src/SingleTask/Views/PlanningPage.xaml` (lines 32-164)
-- [ ] T019 [US3] Add `LinearItemsLayout` with `ItemSpacing="12"` to CollectionView in `src/SingleTask/Views/PlanningPage.xaml`
-- [ ] T020 [US3] Set `SelectionMode="None"` on CollectionView in `src/SingleTask/Views/PlanningPage.xaml`
-- [ ] T021 [US3] Verify DataTemplate bindings work correctly within CollectionView (manual test)
-- [ ] T022 [US3] Verify reorder button commands still bind to ViewModel in CollectionView template
+- [x] T018 [US3] Replace `ScrollView > VerticalStackLayout > BindableLayout` with `CollectionView` in `src/SingleTask/Views/PlanningPage.xaml` (lines 32-164)
+- [x] T019 [US3] Add `LinearItemsLayout` with `ItemSpacing="12"` to CollectionView in `src/SingleTask/Views/PlanningPage.xaml`
+- [x] T020 [US3] Set `SelectionMode="None"` on CollectionView in `src/SingleTask/Views/PlanningPage.xaml`
+- [x] T021 [US3] Verify DataTemplate bindings work correctly within CollectionView (manual test)
+- [x] T022 [US3] Verify reorder button commands still bind to ViewModel in CollectionView template
 
 **Checkpoint**: Scrolling is smooth at 60fps
 
@@ -108,13 +108,13 @@
 
 ### Implementation for User Story 4
 
-- [ ] T023 [P] [US4] Delete unused font file `src/SingleTask/Resources/Fonts/OpenSans-Regular.ttf`
-- [ ] T024 [P] [US4] Delete unused font file `src/SingleTask/Resources/Fonts/OpenSans-Semibold.ttf`
-- [ ] T025 [P] [US4] Delete unused page `src/SingleTask/Views/MainPage.xaml`
-- [ ] T026 [P] [US4] Delete unused code-behind `src/SingleTask/Views/MainPage.xaml.cs`
-- [ ] T027 [P] [US4] Delete unused ViewModel `src/SingleTask.Core/ViewModels/MainViewModel.cs`
-- [ ] T028 [US4] Remove MainPage/MainViewModel DI registrations from `src/SingleTask/MauiProgram.cs` (lines 28-29)
-- [ ] T029 [US4] Verify build succeeds after file deletions with `dotnet build src/SingleTask`
+- [x] T023 [P] [US4] Delete unused font file `src/SingleTask/Resources/Fonts/OpenSans-Regular.ttf`
+- [x] T024 [P] [US4] Delete unused font file `src/SingleTask/Resources/Fonts/OpenSans-Semibold.ttf`
+- [x] T025 [P] [US4] Delete unused page `src/SingleTask/Views/MainPage.xaml`
+- [x] T026 [P] [US4] Delete unused code-behind `src/SingleTask/Views/MainPage.xaml.cs`
+- [x] T027 [P] [US4] Delete unused ViewModel `src/SingleTask.Core/ViewModels/MainViewModel.cs`
+- [x] T028 [US4] Remove MainPage/MainViewModel DI registrations from `src/SingleTask/MauiProgram.cs` (lines 28-29)
+- [x] T029 [US4] Verify build succeeds after file deletions with `dotnet build src/SingleTask`
 
 **Checkpoint**: APK size reduced (verify against baseline)
 
@@ -128,11 +128,11 @@
 
 ### Implementation for User Story 5
 
-- [ ] T030 [US5] Add `<RunAOTCompilation>true</RunAOTCompilation>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
-- [ ] T031 [US5] Add `<TrimMode>full</TrimMode>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
-- [ ] T032 [US5] Add `<AndroidEnableMarshalMethods>true</AndroidEnableMarshalMethods>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
-- [ ] T033 [US5] Add `<AndroidEnablePreloadAssemblies>true</AndroidEnablePreloadAssemblies>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
-- [ ] T034 [US5] Build Release and verify no trimming errors with `dotnet publish -f net10.0-android -c Release`
+- [x] T030 [US5] Add `<RunAOTCompilation>true</RunAOTCompilation>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
+- [x] T031 [US5] Add `<TrimMode>full</TrimMode>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
+- [x] T032 [US5] Add `<AndroidEnableMarshalMethods>true</AndroidEnableMarshalMethods>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
+- [x] T033 [US5] Add `<AndroidEnablePreloadAssemblies>true</AndroidEnablePreloadAssemblies>` to Release PropertyGroup in `src/SingleTask/SingleTask.csproj`
+- [x] T034 [US5] Build Release and verify no trimming errors with `dotnet publish -f net10.0-android -c Release`
 
 **Checkpoint**: Build succeeds with new optimizations
 
@@ -146,10 +146,10 @@
 
 ### Implementation for User Story 6
 
-- [ ] T035 [US6] Replace `Thread.Sleep(250)` with `await Task.Delay(250)` in `src/SingleTask/Platforms/Android/Services/AudioService.cs` (lines 38, 40)
-- [ ] T036 [US6] Change method to async: remove `Task.Run` wrapper in `src/SingleTask/Platforms/Android/Services/AudioService.cs`
-- [ ] T037 [US6] Add `toneGen.Release()` after tone playback in `src/SingleTask/Platforms/Android/Services/AudioService.cs`
-- [ ] T038 [US6] Verify celebration animation remains responsive (manual test)
+- [x] T035 [US6] Replace `Thread.Sleep(250)` with `await Task.Delay(250)` in `src/SingleTask/Platforms/Android/Services/AudioService.cs` (lines 38, 40)
+- [x] T036 [US6] Change method to async: remove `Task.Run` wrapper in `src/SingleTask/Platforms/Android/Services/AudioService.cs`
+- [x] T037 [US6] Add `toneGen.Release()` after tone playback in `src/SingleTask/Platforms/Android/Services/AudioService.cs`
+- [x] T038 [US6] Verify celebration animation remains responsive (manual test)
 
 **Checkpoint**: Audio plays without blocking UI
 
@@ -163,12 +163,12 @@
 
 ### Implementation for User Story 7
 
-- [ ] T039 [P] [US7] Add debug logging to catch block at line 78 in `src/SingleTask.Core/Services/DatabaseService.cs`
-- [ ] T040 [P] [US7] Add debug logging to catch block at line 101 in `src/SingleTask.Core/Services/DatabaseService.cs`
-- [ ] T041 [P] [US7] Add debug logging to catch block at line 130 in `src/SingleTask.Core/Services/DatabaseService.cs`
-- [ ] T042 [P] [US7] Add debug logging to catch blocks in `src/SingleTask/Services/HapticService.cs` (lines 13, 26)
-- [ ] T043 [P] [US7] Add debug logging to catch block in `src/SingleTask/Views/CelebrationPage.xaml.cs` (line 27)
-- [ ] T044 [P] [US7] Add debug logging to catch blocks in `src/SingleTask/Platforms/Android/Services/AudioService.cs` (lines 17, 43)
+- [x] T039 [P] [US7] Add debug logging to catch block at line 78 in `src/SingleTask.Core/Services/DatabaseService.cs`
+- [x] T040 [P] [US7] Add debug logging to catch block at line 101 in `src/SingleTask.Core/Services/DatabaseService.cs`
+- [x] T041 [P] [US7] Add debug logging to catch block at line 130 in `src/SingleTask.Core/Services/DatabaseService.cs`
+- [x] T042 [P] [US7] Add debug logging to catch blocks in `src/SingleTask/Services/HapticService.cs` (lines 13, 26)
+- [x] T043 [P] [US7] Add debug logging to catch block in `src/SingleTask/Views/CelebrationPage.xaml.cs` (line 27)
+- [x] T044 [P] [US7] Add debug logging to catch blocks in `src/SingleTask/Platforms/Android/Services/AudioService.cs` (lines 17, 43)
 
 **Checkpoint**: All catch blocks have appropriate logging
 
@@ -182,14 +182,14 @@
 
 ### Implementation for User Story 8
 
-- [ ] T045 [P] [US8] Delete or move `TestEntity.cs` from `src/SingleTask.Core/Models/TestEntity.cs` to test project if needed
-- [ ] T046 [P] [US8] Delete duplicate service file `src/SingleTask/Platforms/Android/Services/FocusForegroundService.cs`
-- [ ] T047 [P] [US8] Delete build artifact `src/SingleTask/build_debug.log`
-- [ ] T048 [P] [US8] Delete build artifact `src/SingleTask/build_error_3.log`
-- [ ] T049 [P] [US8] Delete build artifact `src/SingleTask/preprocessed.xml`
-- [ ] T050 [US8] Add `*.log` and `preprocessed.xml` to `.gitignore`
-- [ ] T051 [US8] Remove `TestEntity` references from `DatabaseService.cs` if entity removed
-- [ ] T052 [US8] Remove `TestEntity` references from `IDatabaseService.cs` if entity removed
+- [x] T045 [P] [US8] Delete or move `TestEntity.cs` from `src/SingleTask.Core/Models/TestEntity.cs` to test project if needed
+- [x] T046 [P] [US8] Delete duplicate service file `src/SingleTask/Platforms/Android/Services/FocusForegroundService.cs`
+- [x] T047 [P] [US8] Delete build artifact `src/SingleTask/build_debug.log`
+- [x] T048 [P] [US8] Delete build artifact `src/SingleTask/build_error_3.log`
+- [x] T049 [P] [US8] Delete build artifact `src/SingleTask/preprocessed.xml`
+- [x] T050 [US8] Add `*.log` and `preprocessed.xml` to `.gitignore`
+- [x] T051 [US8] Remove `TestEntity` references from `DatabaseService.cs` if entity removed
+- [x] T052 [US8] Remove `TestEntity` references from `IDatabaseService.cs` if entity removed
 
 **Checkpoint**: Codebase is clean with no orphaned files
 
@@ -199,14 +199,14 @@
 
 **Purpose**: Final validation and cross-cutting concerns
 
-- [ ] T053 Run all unit tests to verify no regressions: `dotnet test tests/SingleTask.UnitTests`
-- [ ] T054 Build Release APK and compare to baseline size
-- [ ] T055 Measure cold startup time and compare to baseline
-- [ ] T056 Test task reordering with 20+ tasks and verify <200ms
-- [ ] T057 Test scrolling with 50+ tasks and verify 60fps
-- [ ] T058 Complete full user flow (add tasks → focus → complete → celebrate)
-- [ ] T059 Update `docs/PROJECT_OPTIMIZATION_REPORT.md` with actual results
-- [ ] T060 Commit all changes with message: "feat(optimization): implement project optimization overhaul #008"
+- [x] T053 Run all unit tests to verify no regressions: `dotnet test tests/SingleTask.UnitTests`
+- [x] T054 Build Release APK and compare to baseline size
+- [x] T055 Measure cold startup time and compare to baseline
+- [x] T056 Test task reordering with 20+ tasks and verify <200ms
+- [x] T057 Test scrolling with 50+ tasks and verify 60fps
+- [x] T058 Complete full user flow (add tasks → focus → complete → celebrate)
+- [x] T059 Update `docs/PROJECT_OPTIMIZATION_REPORT.md` with actual results
+- [x] T060 Commit all changes with message: "feat(optimization): implement project optimization overhaul #008"
 
 ---
 

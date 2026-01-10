@@ -25,8 +25,7 @@ public static class MauiProgram
                 fonts.AddFont("MPLUSRounded1c-Regular.ttf", "MaterialSymbols");
             });
 
-        builder.Services.AddSingleton<SingleTask.Core.ViewModels.MainViewModel>();
-        builder.Services.AddSingleton<SingleTask.Views.MainPage>();
+        // FR-011: MainViewModel and MainPage removed - unused legacy files
 
         builder.Services.AddSingleton<SingleTask.Core.ViewModels.PlanningViewModel>();
         builder.Services.AddSingleton<SingleTask.Views.PlanningPage>();

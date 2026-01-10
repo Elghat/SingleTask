@@ -28,20 +28,60 @@ public class MockSecureStorageService : ISecureStorageService
 public class DatabaseServiceTests
 {
     [Fact]
-    public async Task DatabaseService_ShouldInitializedAndSaveItem()
+    public async Task DatabaseService_ShouldInitializeAndSaveTask()
     {
         var dbPath = Path.GetTempFileName();
         var secureStorage = new MockSecureStorageService();
         var service = new DatabaseService(dbPath, secureStorage);
 
-        var item = new TestEntity { Name = "Test Item", CreatedAt = DateTime.UtcNow };
-        var result = await service.SaveItemAsync(item);
+        var task = new TaskItem { Title = "Test Task", Order = 0 };
+        var result = await service.SaveTaskAsync(task);
 
         Assert.Equal(1, result); // 1 row affected
 
-        var items = await service.GetItemsAsync();
-        Assert.NotEmpty(items);
-        Assert.Equal("Test Item", items[0].Name);
+        var tasks = await service.GetTasksAsync();
+        Assert.NotEmpty(tasks);
+        Assert.Equal("Test Task", tasks[0].Title);
+
+        // Cleanup
+        await service.CloseAsync();
+        if (File.Exists(dbPath))
+            File.Delete(dbPath);
+    }
+
+    /// <summary>
+    /// FR-004: Test batch save operation for reorder performance.
+    /// </summary>
+    [Fact]
+    public async Task DatabaseService_SaveTasksAsync_ShouldBatchSave()
+    {
+        var dbPath = Path.GetTempFileName();
+        var secureStorage = new MockSecureStorageService();
+        var service = new DatabaseService(dbPath, secureStorage);
+
+        // Create initial tasks
+        var task1 = new TaskItem { Title = "Task 1", Order = 0 };
+        var task2 = new TaskItem { Title = "Task 2", Order = 1 };
+        var task3 = new TaskItem { Title = "Task 3", Order = 2 };
+
+        await service.SaveTaskAsync(task1);
+        await service.SaveTaskAsync(task2);
+        await service.SaveTaskAsync(task3);
+
+        // Reorder: reverse the order
+        task1.Order = 2;
+        task2.Order = 1;
+        task3.Order = 0;
+
+        // Batch save
+        await service.SaveTasksAsync(new[] { task1, task2, task3 });
+
+        // Verify order was saved
+        var tasks = await service.GetTasksAsync();
+        Assert.Equal(3, tasks.Count);
+        Assert.Equal("Task 3", tasks[0].Title); // Order 0
+        Assert.Equal("Task 2", tasks[1].Title); // Order 1
+        Assert.Equal("Task 1", tasks[2].Title); // Order 2
 
         // Cleanup
         await service.CloseAsync();

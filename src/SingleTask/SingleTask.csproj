@@ -68,6 +68,12 @@
 		<PublishTrimmed>true</PublishTrimmed>
 		<!-- Enable AOT compilation for better obfuscation -->
 		<AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
+		
+		<!-- FR-006 to FR-009: Additional Performance Optimizations -->
+		<RunAOTCompilation>true</RunAOTCompilation>
+		<TrimMode>full</TrimMode>
+		<AndroidEnableMarshalMethods>true</AndroidEnableMarshalMethods>
+		<AndroidEnablePreloadAssemblies>true</AndroidEnablePreloadAssemblies>
 	</PropertyGroup>
 
 	<ItemGroup>
