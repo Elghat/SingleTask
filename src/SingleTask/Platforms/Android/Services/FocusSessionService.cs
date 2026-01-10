@@ -8,7 +8,7 @@ using Android.Content.PM;
 namespace SingleTask.Platforms.Android.Services
 {
     // SEC-004: Explicitly mark internal service as not exported
-    [Service(Exported = false, ForegroundServiceType = ForegroundService.TypeSpecialUse)]
+    [Service(Exported = false, ForegroundServiceType = ForegroundService.TypeDataSync)]
     public class FocusSessionService : Service
     {
         private const string CHANNEL_ID = "focus_channel";
@@ -48,7 +48,7 @@ namespace SingleTask.Platforms.Android.Services
             // API 34+ requires specifying the type
             if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
             {
-                StartForeground(NOTIFICATION_ID, notification, ForegroundService.TypeSpecialUse);
+                StartForeground(NOTIFICATION_ID, notification, ForegroundService.TypeDataSync);
             }
             else if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
             {
