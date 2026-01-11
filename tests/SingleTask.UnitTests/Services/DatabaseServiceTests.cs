@@ -5,34 +5,13 @@ using System.IO;
 
 namespace SingleTask.UnitTests.Services;
 
-/// <summary>
-/// Mock implementation of ISecureStorageService for unit testing.
-/// </summary>
-public class MockSecureStorageService : ISecureStorageService
-{
-    private readonly Dictionary<string, string> _storage = new();
-
-    public Task<string?> GetAsync(string key)
-    {
-        _storage.TryGetValue(key, out var value);
-        return Task.FromResult(value);
-    }
-
-    public Task SetAsync(string key, string value)
-    {
-        _storage[key] = value;
-        return Task.CompletedTask;
-    }
-}
-
 public class DatabaseServiceTests
 {
     [Fact]
     public async Task DatabaseService_ShouldInitializeAndSaveTask()
     {
         var dbPath = Path.GetTempFileName();
-        var secureStorage = new MockSecureStorageService();
-        var service = new DatabaseService(dbPath, secureStorage);
+        var service = new DatabaseService(dbPath);
 
         var task = new TaskItem { Title = "Test Task", Order = 0 };
         var result = await service.SaveTaskAsync(task);
@@ -56,8 +35,7 @@ public class DatabaseServiceTests
     public async Task DatabaseService_SaveTasksAsync_ShouldBatchSave()
     {
         var dbPath = Path.GetTempFileName();
-        var secureStorage = new MockSecureStorageService();
-        var service = new DatabaseService(dbPath, secureStorage);
+        var service = new DatabaseService(dbPath);
 
         // Create initial tasks
         var task1 = new TaskItem { Title = "Task 1", Order = 0 };

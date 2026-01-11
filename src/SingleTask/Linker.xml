@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<linker>
+	<assembly fullname="SingleTask.Core">
+		<type fullname="SingleTask.Core.Models*" preserve="all" />
+		<type fullname="SingleTask.Core.Services*" preserve="all" />
+		<type fullname="SingleTask.Core.ViewModels*" preserve="all" />
+	</assembly>
+</linker>

@@ -179,6 +179,7 @@
             <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
                 <Entry
                     Grid.Column="0"
+                    MaxLength="200"
                     Placeholder="Enter a new task..."
                     PlaceholderColor="{StaticResource InkGrey}"
                     ReturnCommand="{Binding AddTaskCommand}"

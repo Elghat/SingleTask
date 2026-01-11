@@ -22,3 +22,8 @@ preprocessed.xml
 # --- Internal Doc ---
 Internal/
 scripts/
+
+# --- Bundletool Artifacts ---
+apks/
+*.apks
+tools/
